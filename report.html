@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Report | Twendee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background-color: #f4f5f7;
+      }
+      header {
+        background-color: #1c2c5c;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header img {
+        height: 36px;
+      }
+      header a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .filters select,
+      .filters input {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .actions .export-buttons button {
+        margin-left: 0.5rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .export-btn {
+        background-color: #1c2c5c;
+        color: white;
+      }
+
+      .print-btn {
+        background-color: #ccc;
+        color: #333;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      th,
+      td {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      th {
+        background-color: #f0f2f7;
+        color: #333;
+      }
+
+      tr:hover {
+        background-color: #f9f9f9;
+      }
+
+      @media (max-width: 768px) {
+        .filters {
+          flex-direction: column;
+        }
+
+        .actions {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+
+        .actions .export-buttons {
+          align-self: flex-end;
+        }
+      }
+      .chart-container {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      canvas {
+        max-width: 100%;
+        height: auto !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="twendee_logo.png" alt="Twendee Logo" />
+      <a href="index.html">&larr; Back to Dashboard</a>
+    </header>
+
+    <div class="container">
+      <h1>Report</h1>
+
+      <div class="filters">
+        <select>
+          <option value="attendance">Attendance</option>
+          <option value="leave">Leave</option>
+          <option value="contract">Contract</option>
+          <option value="assessment">Assessment</option>
+        </select>
+        <input type="date" placeholder="From date" />
+        <input type="date" placeholder="To date" />
+        <select>
+          <option value="">All Departments</option>
+          <option value="IT">IT</option>
+          <option value="HR">HR</option>
+          <option value="Sales">Sales</option>
+        </select>
+        <button class="export-btn">Apply</button>
+      </div>
+
+      <div class="actions">
+        <div>Total Records: 12</div>
+        <div class="export-buttons">
+          <button class="export-btn" onclick="exportCSV()">Export CSV</button>
+          <button class="print-btn" onclick="window.print()">Print</button>
+        </div>
+      </div>
+      <!-- <div class="chart-container">
+        <canvas id="reportChart"></canvas>
+      </div> -->
+      <table>
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Anna Smith</td>
+            <td>2025-04-13</td>
+            <td>Present</td>
+            <td>08:30</td>
+            <td>17:00</td>
+          </tr>
+          <tr>
+            <td>John Doe</td>
+            <td>2025-04-13</td>
+            <td>Late</td>
+            <td>09:10</td>
+            <td>17:00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function exportCSV() {
+        alert(
+          "This will download the data in CSV format. (Functionality to be implemented)"
+        );
+        // You can implement this using a JS CSV library or manually via Blob/CSV string
+      }
+      const ctx = document.getElementById("reportChart").getContext("2d");
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Present", "Late", "Absent"],
+          datasets: [
+            {
+              label: "Attendance Records",
+              data: [8, 3, 1], // Example static data
+              backgroundColor: ["#1c2c5c", "#f5b041", "#e74c3c"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Attendance Summary",
+            },
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

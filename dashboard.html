@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | Twendee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background-color: #f4f5f7;
+        color: #2e2e2e;
+      }
+
+      header {
+        background-color: #1c2c5c;
+        color: white;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header img {
+        height: 36px;
+      }
+
+      header a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .summary {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .summary-box {
+        flex: 1;
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      .summary-box h2 {
+        margin: 0;
+        font-size: 2rem;
+        color: #1c2c5c;
+      }
+
+      .summary-box p {
+        margin-top: 0.5rem;
+        color: #666;
+      }
+
+      .charts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      canvas {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .charts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .chart-container {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      canvas {
+        max-width: 100%;
+        height: auto !important;
+      }
+      .charts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+      @media (max-width: 900px) {
+        .charts {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .charts {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="twendee_logo.png" alt="Twendee Logo" />
+      <a href="index.html">&larr; Back to HR</a>
+    </header>
+
+    <div class="container">
+      <h1 style="margin-bottom: 1.5rem">HR Dashboard</h1>
+
+      <div class="summary">
+        <div class="summary-box">
+          <h2>45</h2>
+          <p>Total Employees</p>
+        </div>
+        <div class="summary-box">
+          <h2>6</h2>
+          <p>Departments</p>
+        </div>
+        <div class="summary-box">
+          <h2>38</h2>
+          <p>Active Contracts</p>
+        </div>
+        <div class="summary-box">
+          <h2>5</h2>
+          <p>Open Recruitments</p>
+        </div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-container">
+          <canvas id="employeeDeptChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="contractTypeChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="recruitmentStatusChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="assessmentDeptChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="attendanceStatusChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="leaveTypeChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Bar chart: Employees per department
+      new Chart(document.getElementById("employeeDeptChart"), {
+        type: "bar",
+        data: {
+          labels: ["IT", "HR", "Sales", "Finance", "Marketing"],
+          datasets: [
+            {
+              label: "Employees",
+              data: [12, 8, 10, 7, 8],
+              backgroundColor: "#1c2c5c",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Employees by Department",
+            },
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      // Pie chart: Contract types
+      new Chart(document.getElementById("contractTypeChart"), {
+        type: "pie",
+        data: {
+          labels: ["Full-Time", "Part-Time", "Internship"],
+          datasets: [
+            {
+              label: "Contracts",
+              data: [25, 10, 3],
+              backgroundColor: ["#1c2c5c", "#5b7bbb", "#a7bfe8"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Contract Type Distribution",
+            },
+          },
+        },
+      });
+
+      // Doughnut chart: Recruitment status
+      new Chart(document.getElementById("recruitmentStatusChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Open", "Closed"],
+          datasets: [
+            {
+              label: "Recruitment",
+              data: [5, 12],
+              backgroundColor: ["#1c2c5c", "#ccc"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Recruitment Status",
+            },
+          },
+        },
+      });
+      // Assessment: Bar chart
+      new Chart(document.getElementById("assessmentDeptChart"), {
+        type: "bar",
+        data: {
+          labels: ["IT", "HR", "Sales", "Finance"],
+          datasets: [
+            {
+              label: "Assessments",
+              data: [4, 3, 5, 2],
+              backgroundColor: "#1c2c5c",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Assessments by Department",
+            },
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      // Attendance: Doughnut chart
+      new Chart(document.getElementById("attendanceStatusChart"), {
+        type: "doughnut",
+        data: {
+          labels: ["Present", "Late", "Absent"],
+          datasets: [
+            {
+              label: "Attendance",
+              data: [80, 12, 8],
+              backgroundColor: ["#1c2c5c", "#f5b041", "#e74c3c"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Attendance Status",
+            },
+          },
+        },
+      });
+
+      // Leave: Pie chart
+      new Chart(document.getElementById("leaveTypeChart"), {
+        type: "pie",
+        data: {
+          labels: ["Sick Leave", "Annual Leave", "Unpaid Leave"],
+          datasets: [
+            {
+              label: "Leave Types",
+              data: [10, 18, 5],
+              backgroundColor: ["#1c2c5c", "#a7bfe8", "#ccc"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Leave Type Distribution",
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
