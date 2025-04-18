@@ -1,143 +1,216 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HR Management Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ERP HubSpot Style Mockup</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .submenu-panel {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background-color: #2d3a73;
+        border-radius: 0.5rem;
+        min-width: 200px;
+        z-index: 10;
+      }
+      .menu-item:hover .submenu-panel,
+      .submenu-panel:hover {
+        display: block;
+      }
+      .submenu-item:hover {
+        background-color: #3d4c8c;
+      }
+      #rightPanel {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      #rightPanel.show {
+        transform: translateX(0);
+      }
+      .bg-theme {
+        background-color: #1e2a62;
+      }
+      .text-theme {
+        color: #1e2a62;
+      }
+    </style>
+  </head>
+  <body class="flex h-screen bg-gray-100 font-sans overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="relative w-16 bg-theme shadow-lg flex flex-col items-center pt-16 transition-all duration-300"
+    >
+      <div class="flex flex-col gap-4 w-full items-center">
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-user text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded">User</span>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-cogs text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >Automatic Process</span
+          >
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-users text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >Human Resource</span
+          >
+          <div class="submenu-panel p-2">
+            <div class="submenu-item p-2 rounded cursor-pointer">Dashboard</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Department
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              <a href="employee_h.html"> Employee </a>
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">Contract</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Recruitment
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Assessment
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Attendance
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">Leave</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">Report</div>
+          </div>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-file-invoice-dollar text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded">Accountant</span>
+          <div class="submenu-panel p-2">
+            <div class="submenu-item p-2 rounded cursor-pointer">Salary</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Receipts and Expenses
+            </div>
+          </div>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-chart-line text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded">CRM</span>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-id-card text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >CV Management</span
+          >
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-tasks text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >Project and Log work</span
+          >
+        </div>
+      </div>
+      <div class="mt-auto pt-6">
+        <button onclick="toggleSidebar()">
+          <i
+            class="fas fa-angle-double-right text-white text-xl cursor-pointer"
+          ></i>
+        </button>
+      </div>
+    </aside>
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f4f5f7;
-      color: #2e2e2e;
-    }
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Topbar -->
+      <header
+        class="flex items-center justify-between px-6 py-2 bg-theme text-white shadow w-screen fixed top-0 left-0 z-40"
+      >
+        <div class="flex items-center gap-6">
+          <img src="twendee_logo.png" alt="Twendee Logo" class="h-10 w-auto" />
+        </div>
+        <div class="flex items-center gap-4 flex-1 justify-end">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="px-3 py-1 border border-gray-300 rounded text-black w-64"
+          />
+          <i class="fas fa-bell text-xl"></i>
+          <i class="fas fa-cog text-xl"></i>
+          <div class="w-8 h-8 rounded-full bg-gray-300"></div>
+        </div>
+      </header>
 
-    header {
-      background-color: #1c2c5c;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      <!-- Spacer to offset fixed header -->
+      <div class="h-14"></div>
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo img {
-      height: 36px;
-    }
-
-    .user-info {
-      font-size: 0.95rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 2rem;
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .module-block {
-      background-color: white;
-      border-radius: 12px;
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      transition: all 0.2s ease-in-out;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-    }
-
-    .module-block:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .module-icon {
-      width: 50px;
-      height: 50px;
-      background-color: #ded6d9;
-      border-radius: 50%;
-      margin: 0 auto 1rem auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #875a7b;
-    }
-
-    .module-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="twendee_logo.png" alt="Twendee Logo">
+      <!-- Main area -->
+      <main class="flex-1 p-4 overflow-auto relative">
+        <div class="bg-white p-4 rounded shadow">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Main content area</h2>
+            <button
+              onclick="togglePanel()"
+              class="px-3 py-1 bg-theme text-white rounded"
+            >
+              View Details
+            </button>
+          </div>
+          <p class="text-sm text-gray-600">Tables, forms, charts, etc.</p>
+        </div>
+      </main>
     </div>
-    <div class="user-info">
-      <span>👤 John Admin</span>
-      <a href="#" style="color: #fff; text-decoration: underline; font-size: 0.9rem;">Logout</a>
-    </div>
-  </header>
 
-  <main class="grid-container">
-    <a href="dashboard.html" class="module-block">
-      <div class="module-icon">📊</div>
-      <div class="module-name">Dashboard</div>
-    </a>
-    <a href="department.html" class="module-block">
-      <div class="module-icon">🏢</div>
-      <div class="module-name">Department</div>
-    </a>
-    <a href="employee.html" class="module-block">
-      <div class="module-icon">👤</div>
-      <div class="module-name">Employee</div>
-    </a>
-    <a href="contract.html" class="module-block">
-      <div class="module-icon">📝</div>
-      <div class="module-name">Contract</div>
-    </a>
-    <a href="recruitment.html" class="module-block">
-      <div class="module-icon">🎯</div>
-      <div class="module-name">Recruitment</div>
-    </a>
-    <a href="assessment.html" class="module-block">
-      <div class="module-icon">📋</div>
-      <div class="module-name">Assessment</div>
-    </a>
-    <a href="attendance.html" class="module-block">
-      <div class="module-icon">⏱️</div>
-      <div class="module-name">Attendance</div>
-    </a>
-    <a href="leave.html" class="module-block">
-      <div class="module-icon">🌴</div>
-      <div class="module-name">Leave</div>
-    </a>
-    <a href="report.html" class="module-block">
-      <div class="module-icon">📈</div>
-      <div class="module-name">Report</div>
-    </a>
-  </main>
-</body>
+    <!-- Slide-in Panel -->
+    <aside
+      id="rightPanel"
+      class="w-80 bg-white shadow-lg border-l border-gray-200 p-4 fixed top-0 right-0 h-full z-50"
+    >
+      <h2 class="text-lg font-semibold mb-2">Detail View Panel</h2>
+      <p class="text-sm text-gray-600">
+        This panel slides in from the right to show more detailed views or quick
+        actions.
+      </p>
+      <button
+        onclick="togglePanel()"
+        class="mt-4 px-3 py-1 bg-gray-300 rounded"
+      >
+        Close
+      </button>
+    </aside>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("w-16");
+        sidebar.classList.toggle("w-48");
+        const labels = sidebar.querySelectorAll(".sidebar-expanded");
+        labels.forEach((label) => label.classList.toggle("hidden"));
+      }
+
+      function togglePanel() {
+        const panel = document.getElementById("rightPanel");
+        panel.classList.toggle("show");
+      }
+    </script>
+  </body>
 </html>

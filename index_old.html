@@ -1,0 +1,143 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Management Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f4f5f7;
+      color: #2e2e2e;
+    }
+
+    header {
+      background-color: #1c2c5c;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 36px;
+    }
+
+    .user-info {
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .module-block {
+      background-color: white;
+      border-radius: 12px;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .module-block:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .module-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #ded6d9;
+      border-radius: 50%;
+      margin: 0 auto 1rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #875a7b;
+    }
+
+    .module-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="twendee_logo.png" alt="Twendee Logo">
+    </div>
+    <div class="user-info">
+      <span>👤 John Admin</span>
+      <a href="#" style="color: #fff; text-decoration: underline; font-size: 0.9rem;">Logout</a>
+    </div>
+  </header>
+
+  <main class="grid-container">
+    <a href="dashboard.html" class="module-block">
+      <div class="module-icon">📊</div>
+      <div class="module-name">Dashboard</div>
+    </a>
+    <a href="department.html" class="module-block">
+      <div class="module-icon">🏢</div>
+      <div class="module-name">Department</div>
+    </a>
+    <a href="employee.html" class="module-block">
+      <div class="module-icon">👤</div>
+      <div class="module-name">Employee</div>
+    </a>
+    <a href="contract.html" class="module-block">
+      <div class="module-icon">📝</div>
+      <div class="module-name">Contract</div>
+    </a>
+    <a href="recruitment.html" class="module-block">
+      <div class="module-icon">🎯</div>
+      <div class="module-name">Recruitment</div>
+    </a>
+    <a href="assessment.html" class="module-block">
+      <div class="module-icon">📋</div>
+      <div class="module-name">Assessment</div>
+    </a>
+    <a href="attendance.html" class="module-block">
+      <div class="module-icon">⏱️</div>
+      <div class="module-name">Attendance</div>
+    </a>
+    <a href="leave.html" class="module-block">
+      <div class="module-icon">🌴</div>
+      <div class="module-name">Leave</div>
+    </a>
+    <a href="report.html" class="module-block">
+      <div class="module-icon">📈</div>
+      <div class="module-name">Report</div>
+    </a>
+  </main>
+</body>
+</html>
