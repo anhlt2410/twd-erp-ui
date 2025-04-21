@@ -1,236 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ERP HubSpot Style Mockup</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twendee ERP</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 
-  <style>
-    .submenu-panel {
-      display: none;
-      position: absolute;
-      left: 100%;
-      top: 0;
-      background-color: #2d3a73;
-      border-radius: 0.5rem;
-      min-width: 200px;
-      z-index: 10;
-    }
-    .menu-item:hover .submenu-panel,
-    .submenu-panel:hover {
-      display: block;
-    }
-    .submenu-item:hover {
-      background-color: #3d4c8c;
-    }
-    #rightPanel {
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    #rightPanel.show {
-      transform: translateX(0);
-    }
-    .bg-theme {
-      background-color: #1e2a62;
-    }
-    .text-theme {
-      color: #1e2a62;
-    }
-    
-  .tab-content {
-    @apply hidden h-full;
-  }
-  .tab-content.active {
-    @apply block h-full;
-  }
-  </style>
-</head>
-<body class="flex h-screen bg-gray-100 font-sans overflow-hidden">
-  <!-- Sidebar -->
-  <aside id="sidebar" class="relative w-16 bg-theme shadow-lg flex flex-col items-center pt-16 transition-all duration-300">
-    <div class="flex flex-col gap-4 w-full items-center">
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-user text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">User</span>
-      </div>
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-cogs text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">Automatic Process</span>
-      </div>
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-users text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">Human Resource</span>
-        <div class="submenu-panel p-2">
-          <div class="submenu-item p-2 rounded cursor-pointer">Dashboard</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Department</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">
-            <a href="employee_h.html"> Employee </a>
+    <style>
+      .submenu-panel {
+        display: none;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background-color: #2d3a73;
+        border-radius: 0.5rem;
+        min-width: 200px;
+        z-index: 10;
+      }
+      .menu-item:hover .submenu-panel,
+      .submenu-panel:hover {
+        display: block;
+      }
+      .submenu-item:hover {
+        background-color: #3d4c8c;
+      }
+      #rightPanel {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      #rightPanel.show {
+        transform: translateX(0);
+      }
+      .bg-theme {
+        background-color: #1e2a62;
+      }
+      .text-theme {
+        color: #1e2a62;
+      }
+
+      .tab-content {
+        @apply hidden h-full;
+      }
+      .tab-content.active {
+        @apply block h-full;
+      }
+    </style>
+  </head>
+  <body class="flex h-screen bg-gray-100 font-sans overflow-hidden">
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="relative w-16 bg-theme shadow-lg flex flex-col items-center pt-16 transition-all duration-300"
+    >
+      <div class="flex flex-col gap-4 w-full items-center">
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-user text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded">User</span>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-cogs text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >Automatic Process</span
+          >
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-users text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >Human Resource</span
+          >
+          <div class="submenu-panel p-2">
+            <div class="submenu-item p-2 rounded cursor-pointer">Dashboard</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Department
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              <a href="employee_h.html"> Employee </a>
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              <a href="contract_h.html"> Contract </a>
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Recruitment
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Assessment
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Attendance
+            </div>
+            <div class="submenu-item p-2 rounded cursor-pointer">Leave</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">Report</div>
           </div>
-          <div class="submenu-item p-2 rounded cursor-pointer"> <a href="contract_h.html"> Contract </a></div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Recruitment</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Assessment</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Attendance</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Leave</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Report</div>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-file-invoice-dollar text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded">Accountant</span>
+          <div class="submenu-panel p-2">
+            <div class="submenu-item p-2 rounded cursor-pointer">Salary</div>
+            <div class="submenu-item p-2 rounded cursor-pointer">
+              Receipts and Expenses
+            </div>
+          </div>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-chart-line text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded">CRM</span>
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-id-card text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >CV Management</span
+          >
+        </div>
+        <div
+          class="menu-item relative group flex flex-col items-center text-white"
+        >
+          <i class="fas fa-tasks text-xl"></i>
+          <span class="text-xs mt-1 hidden sidebar-expanded"
+            >Project and Log work</span
+          >
         </div>
       </div>
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-file-invoice-dollar text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">Accountant</span>
-        <div class="submenu-panel p-2">
-          <div class="submenu-item p-2 rounded cursor-pointer">Salary</div>
-          <div class="submenu-item p-2 rounded cursor-pointer">Receipts and Expenses</div>
+      <div class="mt-auto pt-6">
+        <button onclick="toggleSidebar()">
+          <i
+            class="fas fa-angle-double-right text-white text-xl cursor-pointer"
+          ></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Topbar -->
+      <header
+        class="flex items-center justify-between px-6 py-2 bg-theme text-white shadow w-full fixed top-0 left-0 z-40"
+      >
+        <div class="flex items-center gap-6">
+          <img
+            src="twendee_logo_transparent.png"
+            alt="Twendee Logo"
+            class="h-10 w-auto"
+          />
         </div>
-      </div>
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-chart-line text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">CRM</span>
-      </div>
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-id-card text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">CV Management</span>
-      </div>
-      <div class="menu-item relative group flex flex-col items-center text-white">
-        <i class="fas fa-tasks text-xl"></i>
-        <span class="text-xs mt-1 hidden sidebar-expanded">Project and Log work</span>
-      </div>
+        <div class="flex items-center gap-4 flex-1 justify-end">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="px-3 py-1 border border-gray-300 rounded text-black w-64"
+          />
+          <i class="fas fa-bell text-xl"></i>
+          <i class="fas fa-cog text-xl"></i>
+          <div class="w-8 h-8 rounded-full bg-gray-300"></div>
+        </div>
+      </header>
+
+      <!-- Spacer to offset fixed header -->
+      <div class="h-14"></div>
+
+      <!-- Main area -->
+      <!-- Main area -->
+      <main class="flex-1 p-4 overflow-auto relative">
+        <div class="bg-white p-4 rounded shadow">
+          <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Danh sách nhân sự</h2>
+            <div class="space-x-2">
+              <button
+                onclick="openCreateModal()"
+                class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700"
+              >
+                <i class="fas fa-plus mr-1"></i>Tạo mới
+              </button>
+              <button
+                onclick="openImportModal()"
+                class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+              >
+                <i class="fas fa-edit mr-1"></i>Import
+              </button>
+              <button
+                onclick="openTelegramModal()"
+                class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                <i class="fab fa-telegram mr-1"></i>Giới thiệu
+              </button>
+              <button
+                onclick="openEmailModal()"
+                class="px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+              >
+                <i class="fas fa-envelope mr-1"></i>Gửi Email
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-auto">
+            <table class="min-w-full table-auto text-sm border border-gray-300">
+              <thead class="bg-theme text-white">
+                <tr>
+                  <th class="px-4 py-2 text-left border">Mã nhân sự</th>
+                  <th class="px-4 py-2 text-left border">Họ tên</th>
+                  <th class="px-4 py-2 text-left border">Ngày sinh</th>
+                  <th class="px-4 py-2 text-left border">Giới tính</th>
+                  <th class="px-4 py-2 text-left border">Nguyên quán</th>
+                  <th class="px-4 py-2 text-left border">Ngày vào</th>
+                  <th class="px-4 py-2 text-left border">Phòng ban</th>
+                  <th class="px-4 py-2 text-left border">Người QL trực tiếp</th>
+                  <th class="px-4 py-2 text-left border">Loại lao động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="hover:bg-gray-100 cursor-pointer"
+                  onclick="openDetailPanel(this)"
+                  data-id="NV001"
+                  data-name="Nguyễn Văn A"
+                  data-dob="01/01/1990"
+                  data-gender="Nam"
+                  data-hometown="Hà Nội"
+                  data-join="01/05/2020"
+                  data-department="Phòng Kế toán"
+                  data-manager="Trần Thị B"
+                  data-type="In-house"
+                >
+                  <td class="px-4 py-2 border">NV001</td>
+                  <td class="px-4 py-2 border">Nguyễn Văn A</td>
+                  <td class="px-4 py-2 border">01/01/1990</td>
+                  <td class="px-4 py-2 border">Nam</td>
+                  <td class="px-4 py-2 border">Hà Nội</td>
+                  <td class="px-4 py-2 border">01/05/2020</td>
+                  <td class="px-4 py-2 border">Phòng Kế toán</td>
+                  <td class="px-4 py-2 border">Trần Thị B</td>
+                  <td class="px-4 py-2 border">In-house</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="flex justify-between items-center mt-4">
+              <span class="text-sm text-gray-600"
+                >Page <span id="currentPage">1</span> of
+                <span id="totalPages">1</span></span
+              >
+              <div class="space-x-2">
+                <button
+                  onclick="changePage(-1)"
+                  class="px-3 py-1 bg-gray-300 rounded"
+                >
+                  Previous
+                </button>
+                <button
+                  onclick="changePage(1)"
+                  class="px-3 py-1 bg-gray-300 rounded"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
-    <div class="mt-auto pt-6">
-      <button onclick="toggleSidebar()">
-        <i class="fas fa-angle-double-right text-white text-xl cursor-pointer"></i>
+
+    <!-- Slide-in Panel -->
+    <aside
+      id="rightPanel"
+      class="w-80 bg-white shadow-lg border-l border-gray-200 p-4 fixed top-0 right-0 h-full z-50"
+    >
+      <h2 class="text-lg font-semibold mb-2">Detail View Panel</h2>
+      <p class="text-sm text-gray-600">
+        This panel slides in from the right to show more detailed views or quick
+        actions.
+      </p>
+      <button
+        onclick="togglePanel()"
+        class="mt-4 px-3 py-1 bg-gray-300 rounded"
+      >
+        Close
       </button>
-    </div>
-  </aside>
+    </aside>
 
-  <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
-    <!-- Topbar -->
-    <header class="flex items-center justify-between px-6 py-2 bg-theme text-white shadow w-full fixed top-0 left-0 z-40">
-      <div class="flex items-center gap-6">
-        <img src="twendee_logo.png" alt="Twendee Logo" class="h-10 w-auto" />
-      </div>
-      <div class="flex items-center gap-4 flex-1 justify-end">
-        <input type="text" placeholder="Search..." class="px-3 py-1 border border-gray-300 rounded text-black w-64" />
-        <i class="fas fa-bell text-xl"></i>
-        <i class="fas fa-cog text-xl"></i>
-        <div class="w-8 h-8 rounded-full bg-gray-300"></div>
-      </div>
-    </header>
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("w-16");
+        sidebar.classList.toggle("w-48");
+        const labels = sidebar.querySelectorAll(".sidebar-expanded");
+        labels.forEach((label) => label.classList.toggle("hidden"));
+      }
 
-    <!-- Spacer to offset fixed header -->
-    <div class="h-14"></div>
+      function togglePanel() {
+        const panel = document.getElementById("rightPanel");
+        panel.classList.toggle("show");
+      }
+    </script>
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("w-16");
+        sidebar.classList.toggle("w-48");
+        const labels = sidebar.querySelectorAll(".sidebar-expanded");
+        labels.forEach((label) => label.classList.toggle("hidden"));
+      }
 
-    <!-- Main area -->
-<!-- Main area -->
-<main class="flex-1 p-4 overflow-auto relative">
-  <div class="bg-white p-4 rounded shadow">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-lg font-semibold">Danh sách nhân sự</h2>
-      <div class="space-x-2">
-        <button onclick="openCreateModal()" class="px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700">
-  <i class="fas fa-plus mr-1"></i>Tạo mới
-</button>
-<button onclick="openImportModal()" class="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600">
-  <i class="fas fa-edit mr-1"></i>Import
-</button>
-      </div>
-    </div>
+      function togglePanel() {
+        const panel = document.getElementById("rightPanel");
+        panel.classList.toggle("show");
+      }
 
-    <div class="overflow-auto">
-      <table class="min-w-full table-auto text-sm border border-gray-300">
-        <thead class="bg-theme text-white">
-          <tr>
-            <th class="px-4 py-2 text-left border">Mã nhân sự</th>
-            <th class="px-4 py-2 text-left border">Họ tên</th>
-            <th class="px-4 py-2 text-left border">Ngày sinh</th>
-            <th class="px-4 py-2 text-left border">Giới tính</th>
-            <th class="px-4 py-2 text-left border">Nguyên quán</th>
-            <th class="px-4 py-2 text-left border">Ngày vào</th>
-            <th class="px-4 py-2 text-left border">Phòng ban</th>
-            <th class="px-4 py-2 text-left border">Người QL trực tiếp</th>
-            <th class="px-4 py-2 text-left border">Loại lao động</th>
-          </tr>
-        </thead>
-<tbody>
-  <tr class="hover:bg-gray-100 cursor-pointer" onclick="openDetailPanel(this)" 
-    data-id="NV001"
-    data-name="Nguyễn Văn A"
-    data-dob="01/01/1990"
-    data-gender="Nam"
-    data-hometown="Hà Nội"
-    data-join="01/05/2020"
-    data-department="Phòng Kế toán"
-    data-manager="Trần Thị B"
-    data-type="In-house"
-  >
-    <td class="px-4 py-2 border">NV001</td>
-    <td class="px-4 py-2 border">Nguyễn Văn A</td>
-    <td class="px-4 py-2 border">01/01/1990</td>
-    <td class="px-4 py-2 border">Nam</td>
-    <td class="px-4 py-2 border">Hà Nội</td>
-    <td class="px-4 py-2 border">01/05/2020</td>
-    <td class="px-4 py-2 border">Phòng Kế toán</td>
-    <td class="px-4 py-2 border">Trần Thị B</td>
-    <td class="px-4 py-2 border">In-house</td>
-  </tr>
-</tbody>
-
-      </table>
-
-        <div class="flex justify-between items-center mt-4">
-  <span class="text-sm text-gray-600">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
-  <div class="space-x-2">
-    <button onclick="changePage(-1)" class="px-3 py-1 bg-gray-300 rounded">Previous</button>
-    <button onclick="changePage(1)" class="px-3 py-1 bg-gray-300 rounded">Next</button>
-  </div>
-</div>
-    </div>
-  </div>
-</main>
-
-  </div>
-
-  <!-- Slide-in Panel -->
-  <aside id="rightPanel" class="w-80 bg-white shadow-lg border-l border-gray-200 p-4 fixed top-0 right-0 h-full z-50">
-    <h2 class="text-lg font-semibold mb-2">Detail View Panel</h2>
-    <p class="text-sm text-gray-600">This panel slides in from the right to show more detailed views or quick actions.</p>
-    <button onclick="togglePanel()" class="mt-4 px-3 py-1 bg-gray-300 rounded">Close</button>
-  </aside>
-
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('w-16');
-      sidebar.classList.toggle('w-48');
-      const labels = sidebar.querySelectorAll('.sidebar-expanded');
-      labels.forEach(label => label.classList.toggle('hidden'));
-    }
-
-    function togglePanel() {
-      const panel = document.getElementById('rightPanel');
-      panel.classList.toggle('show');
-    }
-  </script>
-  <script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    sidebar.classList.toggle('w-16');
-    sidebar.classList.toggle('w-48');
-    const labels = sidebar.querySelectorAll('.sidebar-expanded');
-    labels.forEach(label => label.classList.toggle('hidden'));
-  }
-
-  function togglePanel() {
-    const panel = document.getElementById('rightPanel');
-    panel.classList.toggle('show');
-  }
-
-function openDetailPanel(data) {
-  const panel = document.getElementById('rightPanel');
-  panel.innerHTML = `
+      function openDetailPanel(data) {
+        const panel = document.getElementById("rightPanel");
+        panel.innerHTML = `
     <div class="p-4">
       <h2 class="text-lg font-semibold mb-2">Thông tin nhân sự</h2>
       <p><strong>Mã nhân sự:</strong> ${data.id}</p>
@@ -247,35 +347,58 @@ function openDetailPanel(data) {
       </div>
     </div>
   `;
-  panel.classList.add('show');
-}
+        panel.classList.add("show");
+      }
 
-  const employees = [
-  {
-    id: 'NV001', name: 'Nguyễn Văn A', dob: '01/01/1990', gender: 'Nam',
-    hometown: 'Hà Nội', join: '01/05/2020', department: 'Phòng Kế toán',
-    manager: 'Trần Thị B', type: 'In-house'
-  },
-  {
-    id: 'NV002', name: 'Lê Thị C', dob: '15/02/1992', gender: 'Nữ',
-    hometown: 'Đà Nẵng', join: '12/03/2021', department: 'Phòng Nhân sự',
-    manager: 'Nguyễn Văn A', type: 'Remote'
-  },
-  {
-    id: 'NV003', name: 'Phạm Văn D', dob: '22/08/1988', gender: 'Nam',
-    hometown: 'Hải Phòng', join: '05/07/2018', department: 'IT',
-    manager: 'Nguyễn Văn A', type: 'In-house'
-  }
-];
+      const employees = [
+        {
+          id: "NV001",
+          name: "Nguyễn Văn A",
+          dob: "01/01/1990",
+          gender: "Nam",
+          hometown: "Hà Nội",
+          join: "01/05/2020",
+          department: "Phòng Kế toán",
+          manager: "Trần Thị B",
+          type: "In-house",
+        },
+        {
+          id: "NV002",
+          name: "Lê Thị C",
+          dob: "15/02/1992",
+          gender: "Nữ",
+          hometown: "Đà Nẵng",
+          join: "12/03/2021",
+          department: "Phòng Nhân sự",
+          manager: "Nguyễn Văn A",
+          type: "Remote",
+        },
+        {
+          id: "NV003",
+          name: "Phạm Văn D",
+          dob: "22/08/1988",
+          gender: "Nam",
+          hometown: "Hải Phòng",
+          join: "05/07/2018",
+          department: "IT",
+          manager: "Nguyễn Văn A",
+          type: "In-house",
+        },
+      ];
 
-let currentPage = 1;
-const pageSize = 2;
+      let currentPage = 1;
+      const pageSize = 2;
 
-function renderTable() {
-  const start = (currentPage - 1) * pageSize;
-  const end = start + pageSize;
-  const rows = employees.slice(start, end).map(emp => `
-  <tr class="hover:bg-gray-100 group cursor-pointer" onclick='handleRowClick(event, ${JSON.stringify(emp)})'>
+      function renderTable() {
+        const start = (currentPage - 1) * pageSize;
+        const end = start + pageSize;
+        const rows = employees
+          .slice(start, end)
+          .map(
+            (emp) => `
+  <tr class="hover:bg-gray-100 group cursor-pointer" onclick='handleRowClick(event, ${JSON.stringify(
+    emp
+  )})'>
     <td class="px-4 py-2 border">${emp.id}</td>
     <td class="px-4 py-2 border">${emp.name}</td>
     <td class="px-4 py-2 border">${emp.dob}</td>
@@ -286,294 +409,659 @@ function renderTable() {
     <td class="px-4 py-2 border">${emp.manager}</td>
     <td class="px-4 py-2 border">${emp.type}</td>
     <td class="px-4 py-2 border text-right space-x-2">
-<button onclick='event.stopPropagation(); openEditModal(${JSON.stringify(emp)})' class="text-yellow-500 hover:text-yellow-600"><i class="fas fa-edit"></i></button>
-<button onclick='event.stopPropagation(); showDeleteModal(${JSON.stringify(emp)})' class="text-red-600 hover:text-red-700"><i class="fas fa-trash"></i></button>
+<button onclick='event.stopPropagation(); openEditModal(${JSON.stringify(
+              emp
+            )})' class="text-yellow-500 hover:text-yellow-600"><i class="fas fa-edit"></i></button>
+<button onclick='event.stopPropagation(); showDeleteModal(${JSON.stringify(
+              emp
+            )})' class="text-red-600 hover:text-red-700"><i class="fas fa-trash"></i></button>
     </td>
   </tr>
-`).join('');
+`
+          )
+          .join("");
 
-  document.querySelector('tbody').innerHTML = rows;
-  document.getElementById('currentPage').textContent = currentPage;
-  document.getElementById('totalPages').textContent = Math.ceil(employees.length / pageSize);
-}
-function handleRowClick(event, emp) {
-  openDetailPanel(emp);
-}
+        document.querySelector("tbody").innerHTML = rows;
+        document.getElementById("currentPage").textContent = currentPage;
+        document.getElementById("totalPages").textContent = Math.ceil(
+          employees.length / pageSize
+        );
+      }
+      function handleRowClick(event, emp) {
+        openDetailPanel(emp);
+      }
 
-function changePage(direction) {
-  const totalPages = Math.ceil(employees.length / pageSize);
-  currentPage += direction;
-  if (currentPage < 1) currentPage = 1;
-  if (currentPage > totalPages) currentPage = totalPages;
-  renderTable();
-}
+      function changePage(direction) {
+        const totalPages = Math.ceil(employees.length / pageSize);
+        currentPage += direction;
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+        renderTable();
+      }
 
-// Call on page load
-renderTable();
-function editEmployee(emp) {
-  alert(`Chỉnh sửa nhân sự: ${emp.name} (${emp.id})`);
-  // You can open a modal or form here
-}
-
-function deleteEmployee(id) {
-  const confirmed = confirm(`Bạn có chắc chắn muốn xoá nhân sự ${id}?`);
-  if (confirmed) {
-    const index = employees.findIndex(e => e.id === id);
-    if (index !== -1) {
-      employees.splice(index, 1);
+      // Call on page load
       renderTable();
-    }
-  }
-}
+      function editEmployee(emp) {
+        alert(`Chỉnh sửa nhân sự: ${emp.name} (${emp.id})`);
+        // You can open a modal or form here
+      }
 
+      function deleteEmployee(id) {
+        const confirmed = confirm(`Bạn có chắc chắn muốn xoá nhân sự ${id}?`);
+        if (confirmed) {
+          const index = employees.findIndex((e) => e.id === id);
+          if (index !== -1) {
+            employees.splice(index, 1);
+            renderTable();
+          }
+        }
+      }
+    </script>
+    <!-- Modal Trigger -->
 
-</script>
-<!-- Modal Trigger -->
+    <!-- Modal Backdrop -->
+    <div
+      id="createEmployeeModal"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <!-- Modal Content -->
+      <div
+        class="bg-white w-full max-w-6xl rounded-lg shadow-lg flex flex-col max-h-[90vh]"
+      >
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-xl font-semibold">Tạo mới nhân sự</h2>
+          <button
+            onclick="closeCreateModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
 
-<!-- Modal Backdrop -->
-<div id="createEmployeeModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
-  <!-- Modal Content -->
-  <div class="bg-white w-full max-w-6xl rounded-lg shadow-lg flex flex-col max-h-[90vh]">
-    <div class="flex justify-between items-center p-4 border-b">
-      <h2 class="text-xl font-semibold">Tạo mới nhân sự</h2>
-      <button onclick="closeCreateModal()" class="text-gray-500 hover:text-gray-700">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+        <!-- Tabs -->
+        <div class="border-b border-gray-200">
+          <nav class="flex space-x-4 px-4" id="modalTabs">
+            <button
+              class="tab-button py-2 text-blue-600 border-b-2 border-blue-600 font-medium"
+              onclick="showTab('tab1')"
+            >
+              Sơ yếu lý lịch
+            </button>
+            <button
+              class="tab-button py-2 text-gray-600 hover:text-blue-600"
+              onclick="showTab('tab2')"
+            >
+              Hợp đồng
+            </button>
+            <button
+              class="tab-button py-2 text-gray-600 hover:text-blue-600"
+              onclick="showTab('tab3')"
+            >
+              Bảo hiểm
+            </button>
+            <button
+              class="tab-button py-2 text-gray-600 hover:text-blue-600"
+              onclick="showTab('tab4')"
+            >
+              Sức khỏe
+            </button>
+          </nav>
+        </div>
 
-    <!-- Tabs -->
-    <div class="border-b border-gray-200">
-      <nav class="flex space-x-4 px-4" id="modalTabs">
-        <button class="tab-button py-2 text-blue-600 border-b-2 border-blue-600 font-medium" onclick="showTab('tab1')">Sơ yếu lý lịch</button>
-        <button class="tab-button py-2 text-gray-600 hover:text-blue-600" onclick="showTab('tab2')">Hợp đồng</button>
-        <button class="tab-button py-2 text-gray-600 hover:text-blue-600" onclick="showTab('tab3')">Bảo hiểm</button>
-        <button class="tab-button py-2 text-gray-600 hover:text-blue-600" onclick="showTab('tab4')">Sức khỏe</button>
-      </nav>
-    </div>
+        <!-- Tab Contents -->
+        <div class="p-6 overflow-y-auto flex-1">
+          <!-- Modal Tabs Content - Tab 1: Sơ yếu lý lịch -->
+          <div id="tab1" class="tab-content">
+            <h3 class="text-lg font-semibold mb-4">1. Thông tin cá nhân</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label>Mã nhân sự</label
+                ><input class="input" disabled value="Tự động" />
+              </div>
+              <div><label>Mã chấm công</label><input class="input" /></div>
+              <div><label>Họ tên</label><input class="input" /></div>
+              <div>
+                <label>Ngày sinh</label><input type="date" class="input" />
+              </div>
+              <div>
+                <label>Giới tính</label
+                ><select class="input">
+                  <option>Nam</option>
+                  <option>Nữ</option>
+                </select>
+              </div>
+              <div>
+                <label>Nghĩa vụ quân sự</label
+                ><select class="input">
+                  <option>Đã đi</option>
+                  <option>Chưa đi</option>
+                  <option>Không phải đi</option>
+                </select>
+              </div>
+              <div>
+                <label>Nơi sinh</label
+                ><input class="input" placeholder="Gợi ý khi nhập" />
+              </div>
+              <div>
+                <label>Nguyên quán</label
+                ><input class="input" placeholder="Gợi ý khi nhập" />
+              </div>
+              <div>
+                <label>Quốc tịch</label
+                ><input class="input" placeholder="Gợi ý khi nhập" />
+              </div>
+              <div>
+                <label>Tình trạng hôn nhân</label
+                ><select class="input">
+                  <option>Độc thân</option>
+                  <option>Kết hôn</option>
+                  <option>Ly hôn</option>
+                </select>
+              </div>
+              <div>
+                <label>Dân tộc</label
+                ><input class="input" placeholder="Danh sách dân tộc" />
+              </div>
+              <div>
+                <label>Tôn giáo</label
+                ><select class="input">
+                  <option>Không</option>
+                  <option>Phật giáo</option>
+                  <option>Thiên chúa</option>
+                </select>
+              </div>
+              <div><label>MST cá nhân</label><input class="input" /></div>
+              <div>
+                <label>Ngày vào</label><input type="date" class="input" />
+              </div>
+              <div>
+                <label>Ngày ký HĐLĐ chính thức</label
+                ><input type="date" class="input" />
+              </div>
+              <div>
+                <label>Người QL trực tiếp</label
+                ><input class="input" placeholder="Gợi ý khi nhập" />
+              </div>
+              <div>
+                <label>Loại lao động</label
+                ><select class="input">
+                  <option>In-house</option>
+                  <option>CTV</option>
+                  <option>Vendor</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
-    <!-- Tab Contents -->
-    <div class="p-6 overflow-y-auto flex-1">
-      <!-- Modal Tabs Content - Tab 1: Sơ yếu lý lịch -->
-<div id="tab1" class="tab-content">
-  <h3 class="text-lg font-semibold mb-4">1. Thông tin cá nhân</h3>
-  <div class="grid grid-cols-2 gap-4">
-    <div><label>Mã nhân sự</label><input class="input" disabled value="Tự động"/></div>
-    <div><label>Mã chấm công</label><input class="input"/></div>
-    <div><label>Họ tên</label><input class="input"/></div>
-    <div><label>Ngày sinh</label><input type="date" class="input"/></div>
-    <div><label>Giới tính</label><select class="input"><option>Nam</option><option>Nữ</option></select></div>
-    <div><label>Nghĩa vụ quân sự</label><select class="input"><option>Đã đi</option><option>Chưa đi</option><option>Không phải đi</option></select></div>
-    <div><label>Nơi sinh</label><input class="input" placeholder="Gợi ý khi nhập"/></div>
-    <div><label>Nguyên quán</label><input class="input" placeholder="Gợi ý khi nhập"/></div>
-    <div><label>Quốc tịch</label><input class="input" placeholder="Gợi ý khi nhập"/></div>
-    <div><label>Tình trạng hôn nhân</label><select class="input"><option>Độc thân</option><option>Kết hôn</option><option>Ly hôn</option></select></div>
-    <div><label>Dân tộc</label><input class="input" placeholder="Danh sách dân tộc"/></div>
-    <div><label>Tôn giáo</label><select class="input"><option>Không</option><option>Phật giáo</option><option>Thiên chúa</option></select></div>
-    <div><label>MST cá nhân</label><input class="input"/></div>
-    <div><label>Ngày vào</label><input type="date" class="input"/></div>
-    <div><label>Ngày ký HĐLĐ chính thức</label><input type="date" class="input"/></div>
-    <div><label>Người QL trực tiếp</label><input class="input" placeholder="Gợi ý khi nhập"/></div>
-    <div><label>Loại lao động</label><select class="input"><option>In-house</option><option>CTV</option><option>Vendor</option></select></div>
-  </div>
-</div>
+          <!-- Tab 2: Hợp đồng -->
+          <div id="tab2" class="tab-content">
+            <h3 class="text-lg font-semibold mb-4">1. Thông tin chung</h3>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label>Mã hợp đồng</label
+                ><input class="input" disabled value="Tự động" />
+              </div>
+              <div>
+                <label>Loại hợp đồng</label
+                ><select class="input">
+                  <option>Lao động 1 năm</option>
+                  <option>Thử việc</option>
+                  <option>Vô thời hạn</option>
+                  <option>Dưới 12 tháng</option>
+                  <option>3 năm</option>
+                  <option>CTV</option>
+                  <option>Học việc</option>
+                </select>
+              </div>
+              <div><label>Phòng ban</label><input class="input" /></div>
+              <div><label>Vị trí</label><input class="input" /></div>
+              <div><label>Chức vụ</label><input class="input" /></div>
+              <div>
+                <label>Cấp bậc</label
+                ><select class="input">
+                  <option>Fresher</option>
+                  <option>Intern</option>
+                  <option>Junior</option>
+                  <option>Junior (no Eng)</option>
+                  <option>Mid</option>
+                  <option>Senior</option>
+                </select>
+              </div>
+              <div><label>Nơi làm việc</label><input class="input" /></div>
+              <div>
+                <label>Hình thức làm việc</label
+                ><select class="input">
+                  <option>Full-time</option>
+                  <option>Part-time</option>
+                  <option>CTV</option>
+                </select>
+              </div>
+              <div>
+                <label>Hiệu lực từ ngày</label
+                ><input type="date" class="input" required />
+              </div>
+              <div>
+                <label>Hiệu lực đến ngày</label
+                ><input type="date" class="input" />
+              </div>
+              <div>
+                <label>Ngày ký</label><input type="date" class="input" />
+              </div>
+              <div><label>Người ký</label><input class="input" /></div>
+              <div class="col-span-2">
+                <label><input type="checkbox" class="mr-2" />Ký số</label>
+              </div>
+            </div>
 
-<!-- Tab 2: Hợp đồng -->
-<div id="tab2" class="tab-content">
-  <h3 class="text-lg font-semibold mb-4">1. Thông tin chung</h3>
-  <div class="grid grid-cols-2 gap-4 mb-6">
-    <div><label>Mã hợp đồng</label><input class="input" disabled value="Tự động"/></div>
-    <div><label>Loại hợp đồng</label><select class="input">
-      <option>Lao động 1 năm</option><option>Thử việc</option><option>Vô thời hạn</option><option>Dưới 12 tháng</option><option>3 năm</option><option>CTV</option><option>Học việc</option>
-    </select></div>
-    <div><label>Phòng ban</label><input class="input"/></div>
-    <div><label>Vị trí</label><input class="input"/></div>
-    <div><label>Chức vụ</label><input class="input"/></div>
-    <div><label>Cấp bậc</label><select class="input">
-      <option>Fresher</option><option>Intern</option><option>Junior</option><option>Junior (no Eng)</option><option>Mid</option><option>Senior</option>
-    </select></div>
-    <div><label>Nơi làm việc</label><input class="input"/></div>
-    <div><label>Hình thức làm việc</label><select class="input"><option>Full-time</option><option>Part-time</option><option>CTV</option></select></div>
-    <div><label>Hiệu lực từ ngày</label><input type="date" class="input" required/></div>
-    <div><label>Hiệu lực đến ngày</label><input type="date" class="input"/></div>
-    <div><label>Ngày ký</label><input type="date" class="input"/></div>
-    <div><label>Người ký</label><input class="input"/></div>
-    <div class="col-span-2"><label><input type="checkbox" class="mr-2"/>Ký số</label></div>
-  </div>
+            <h3 class="text-lg font-semibold mb-4">2. Lương và phụ cấp</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label>Từ ngày</label
+                ><input type="date" class="input" required />
+              </div>
+              <div><label>Ghi chú</label><input class="input" /></div>
+              <div>
+                <label>Tiền lương</label><input type="number" class="input" />
+              </div>
+              <div>
+                <label>Loại phụ cấp</label>
+                <select class="input">
+                  <option>Đi lại</option>
+                  <option>Ăn trưa</option>
+                </select>
+              </div>
+              <div>
+                <label>Số tiền</label><input type="number" class="input" />
+              </div>
+              <div><label>Ghi chú</label><input class="input" /></div>
+            </div>
+          </div>
 
-  <h3 class="text-lg font-semibold mb-4">2. Lương và phụ cấp</h3>
-  <div class="grid grid-cols-2 gap-4">
-    <div><label>Từ ngày</label><input type="date" class="input" required/></div>
-    <div><label>Ghi chú</label><input class="input"/></div>
-    <div><label>Tiền lương</label><input type="number" class="input"/></div>
-    <div>
-      <label>Loại phụ cấp</label>
-      <select class="input">
-        <option>Đi lại</option><option>Ăn trưa</option>
-      </select>
-    </div>
-    <div><label>Số tiền</label><input type="number" class="input"/></div>
-    <div><label>Ghi chú</label><input class="input"/></div>
-  </div>
-</div>
+          <!-- Tab 3: Bảo hiểm -->
+          <div id="tab3" class="tab-content">
+            <h3 class="text-lg font-semibold mb-4">1. Thông tin bảo hiểm</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div><label>Số sổ BHXH</label><input class="input" /></div>
+              <div>
+                <label>Trạng thái sổ</label
+                ><select class="input">
+                  <option>Mới</option>
+                  <option>Đang dùng</option>
+                  <option>Ngừng dùng</option>
+                </select>
+              </div>
+              <div>
+                <label>Pháp nhân đóng</label
+                ><select class="input">
+                  <option>Công ty A</option>
+                  <option>Công ty B</option>
+                </select>
+              </div>
+              <div><label>Số thẻ BHYT</label><input class="input" /></div>
+              <div><label>Mã tỉnh cấp</label><input class="input" /></div>
+              <div>
+                <label>ĐK khám chữa bệnh</label
+                ><select class="input">
+                  <option>Bệnh viện A</option>
+                  <option>Bệnh viện B</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
-<!-- Tab 3: Bảo hiểm -->
-<div id="tab3" class="tab-content">
-  <h3 class="text-lg font-semibold mb-4">1. Thông tin bảo hiểm</h3>
-  <div class="grid grid-cols-2 gap-4">
-    <div><label>Số sổ BHXH</label><input class="input"/></div>
-    <div><label>Trạng thái sổ</label><select class="input"><option>Mới</option><option>Đang dùng</option><option>Ngừng dùng</option></select></div>
-    <div><label>Pháp nhân đóng</label><select class="input"><option>Công ty A</option><option>Công ty B</option></select></div>
-    <div><label>Số thẻ BHYT</label><input class="input"/></div>
-    <div><label>Mã tỉnh cấp</label><input class="input"/></div>
-    <div><label>ĐK khám chữa bệnh</label><select class="input"><option>Bệnh viện A</option><option>Bệnh viện B</option></select></div>
-  </div>
-</div>
+          <!-- Tab 4: Sức khỏe -->
+          <div id="tab4" class="tab-content">
+            <h3 class="text-lg font-semibold mb-4">
+              Tệp khám sức khỏe định kỳ
+            </h3>
+            <div class="mb-6">
+              <label class="block mb-2">Nhập tệp PDF, ảnh hoặc bảng biểu</label>
+              <input
+                type="file"
+                accept=".pdf,image/*,.xlsx,.xls"
+                class="input"
+              />
+            </div>
+          </div>
 
-
-      <!-- Tab 4: Sức khỏe -->
-      <div id="tab4" class="tab-content">
-        <h3 class="text-lg font-semibold mb-4">Tệp khám sức khỏe định kỳ</h3>
-        <div class="mb-6">
-          <label class="block mb-2">Nhập tệp PDF, ảnh hoặc bảng biểu</label>
-          <input type="file" accept=".pdf,image/*,.xlsx,.xls" class="input" />
+          <!-- Global Save Button -->
+          <div class="flex justify-end px-6 pb-6">
+            <button
+              class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Lưu
+            </button>
+          </div>
         </div>
       </div>
-
-<!-- Global Save Button -->
-<div class="flex justify-end px-6 pb-6">
-  <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Lưu</button>
-</div>
-    </div>
-  </div>
-   <!--      <div class="flex justify-end mt-6">
+      <!--      <div class="flex justify-end mt-6">
           <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Lưu</button>
         </div> -->
-</div>
-
-<!-- Import Modal -->
-<div id="importEmployeeModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
-  <div class="bg-white w-full max-w-xl rounded-lg shadow-lg">
-    <div class="flex justify-between items-center p-4 border-b">
-      <h2 class="text-xl font-semibold">Import nhân sự</h2>
-      <button onclick="closeImportModal()" class="text-gray-500 hover:text-gray-700">
-        <i class="fas fa-times"></i>
-      </button>
     </div>
-    <div class="p-6">
-      <label class="block mb-2 font-medium">Chọn tệp Excel hoặc CSV để nhập dữ liệu</label>
-      <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" class="input-float mb-4" />
 
-      <div class="flex justify-end gap-2 mt-4">
-        <button onclick="closeImportModal()" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Huỷ</button>
-        <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Import</button>
+    <!-- Import Modal -->
+    <div
+      id="importEmployeeModal"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white w-full max-w-xl rounded-lg shadow-lg">
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-xl font-semibold">
+            Import kê khai thông tin nhân sự
+          </h2>
+          <button
+            onclick="closeImportModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <label class="block mb-2 font-medium"
+            >Chọn tệp Excel hoặc CSV để nhập dữ liệu</label
+          >
+          <input
+            type="file"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+            class="input-float mb-4"
+          />
+
+          <div class="flex justify-end gap-2 mt-4">
+            <button
+              onclick="closeImportModal()"
+              class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+            >
+              Huỷ
+            </button>
+            <button
+              class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Import
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<script>
-function openImportModal() {
-  document.getElementById('importEmployeeModal').classList.remove('hidden');
-}
-function closeImportModal() {
-  document.getElementById('importEmployeeModal').classList.add('hidden');
-}
-</script>
-
-<!-- Tailwind style for floating label inputs -->
-<style>
-  .input-float {
-    @apply block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 peer;
-  }
-  .label-float {
-    @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2.5 bg-white px-1 peer-placeholder-shown:translate-y-2.5 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-4;
-  }
-</style>
-
-<style>
-  .input {
-    @apply mt-1 w-full border border-gray-300 rounded px-2 py-1;
-  }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-</style>
-
-<script>
-  function openCreateModal() {
-    document.getElementById('createEmployeeModal').classList.remove('hidden');
-    showTab('tab1');
-  }
-    function openEditModal(employee) {
-    const modal = document.getElementById('createEmployeeModal');
-    modal.classList.remove('hidden');
-    showTab('tab1');
-
-    // Fill inputs
-    document.querySelector('#tab1 input[placeholder="Gợi ý khi nhập"]').value = employee.hometown || '';
-    document.querySelector('#tab1 input[placeholder="Gợi ý khi nhập"]').value = employee.birthplace || '';
-    document.querySelector('#tab1 input[placeholder="Danh sách dân tộc"]').value = employee.ethnicity || '';
-    document.querySelector('#tab1 input[placeholder="Gợi ý khi nhập"]').value = employee.nationality || '';
-    document.querySelector('#tab1 input[type="text"]').value = employee.name || '';
-    document.querySelector('#tab1 input[type="date"]').value = employee.dob || '';
-    // and so on...
-
-    // You may also want to store current employee ID for saving later
-    window.currentEditingEmployeeId = employee.id;
-  }
-  function closeCreateModal() {
-    document.getElementById('createEmployeeModal').classList.add('hidden');
-  }
-  function showTab(tabId) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-
-    document.querySelectorAll('#modalTabs .tab-button').forEach(btn => btn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600'));
-    const tabButtons = document.querySelectorAll('#modalTabs .tab-button');
-    tabButtons.forEach(btn => {
-      if (btn.getAttribute('onclick').includes(tabId)) {
-        btn.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+    <script>
+      function openImportModal() {
+        document
+          .getElementById("importEmployeeModal")
+          .classList.remove("hidden");
       }
-    });
-  }
-  let employeeToDeleteId = null;
+      function closeImportModal() {
+        document.getElementById("importEmployeeModal").classList.add("hidden");
+      }
+    </script>
 
-function showDeleteModal(emp) {
-  employeeToDeleteId = emp.id;
-  document.getElementById('deleteEmployeeName').textContent = `${emp.name} (${emp.id})`;
-  document.getElementById('deleteConfirmModal').classList.remove('hidden');
-}
+    <!-- Tailwind style for floating label inputs -->
+    <style>
+      .input-float {
+        @apply block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white border border-gray-300 rounded-md appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 peer;
+      }
+      .label-float {
+        @apply absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] left-2.5 bg-white px-1 peer-placeholder-shown:translate-y-2.5 peer-placeholder-shown:scale-100 peer-focus:scale-75 peer-focus:-translate-y-4;
+      }
+    </style>
 
-function closeDeleteModal() {
-  document.getElementById('deleteConfirmModal').classList.add('hidden');
-  employeeToDeleteId = null;
-}
+    <style>
+      .input {
+        @apply mt-1 w-full border border-gray-300 rounded px-2 py-1;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
 
-function confirmDelete() {
-  if (!employeeToDeleteId) return;
-  const index = employees.findIndex(e => e.id === employeeToDeleteId);
-  if (index !== -1) {
-    employees.splice(index, 1);
-    renderTable();
-  }
-  closeDeleteModal();
-}
+    <script>
+      function openCreateModal() {
+        document
+          .getElementById("createEmployeeModal")
+          .classList.remove("hidden");
+        showTab("tab1");
+      }
+      function openEditModal(employee) {
+        const modal = document.getElementById("createEmployeeModal");
+        modal.classList.remove("hidden");
+        showTab("tab1");
 
-</script>
-<!-- Delete Confirmation Modal -->
-<div id="deleteConfirmModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center">
-  <div class="bg-white w-full max-w-md rounded-lg shadow-lg">
-    <div class="p-4 border-b">
-      <h2 class="text-lg font-semibold">Xác nhận xoá nhân sự</h2>
+        // Fill inputs
+        document.querySelector(
+          '#tab1 input[placeholder="Gợi ý khi nhập"]'
+        ).value = employee.hometown || "";
+        document.querySelector(
+          '#tab1 input[placeholder="Gợi ý khi nhập"]'
+        ).value = employee.birthplace || "";
+        document.querySelector(
+          '#tab1 input[placeholder="Danh sách dân tộc"]'
+        ).value = employee.ethnicity || "";
+        document.querySelector(
+          '#tab1 input[placeholder="Gợi ý khi nhập"]'
+        ).value = employee.nationality || "";
+        document.querySelector('#tab1 input[type="text"]').value =
+          employee.name || "";
+        document.querySelector('#tab1 input[type="date"]').value =
+          employee.dob || "";
+        // and so on...
+
+        // You may also want to store current employee ID for saving later
+        window.currentEditingEmployeeId = employee.id;
+      }
+      function closeCreateModal() {
+        document.getElementById("createEmployeeModal").classList.add("hidden");
+      }
+      function showTab(tabId) {
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((tab) => tab.classList.remove("active"));
+        document.getElementById(tabId).classList.add("active");
+
+        document
+          .querySelectorAll("#modalTabs .tab-button")
+          .forEach((btn) =>
+            btn.classList.remove(
+              "text-blue-600",
+              "border-b-2",
+              "border-blue-600"
+            )
+          );
+        const tabButtons = document.querySelectorAll("#modalTabs .tab-button");
+        tabButtons.forEach((btn) => {
+          if (btn.getAttribute("onclick").includes(tabId)) {
+            btn.classList.add("text-blue-600", "border-b-2", "border-blue-600");
+          }
+        });
+      }
+      let employeeToDeleteId = null;
+
+      function showDeleteModal(emp) {
+        employeeToDeleteId = emp.id;
+        document.getElementById(
+          "deleteEmployeeName"
+        ).textContent = `${emp.name} (${emp.id})`;
+        document
+          .getElementById("deleteConfirmModal")
+          .classList.remove("hidden");
+      }
+
+      function closeDeleteModal() {
+        document.getElementById("deleteConfirmModal").classList.add("hidden");
+        employeeToDeleteId = null;
+      }
+
+      function confirmDelete() {
+        if (!employeeToDeleteId) return;
+        const index = employees.findIndex((e) => e.id === employeeToDeleteId);
+        if (index !== -1) {
+          employees.splice(index, 1);
+          renderTable();
+        }
+        closeDeleteModal();
+      }
+    </script>
+    <script>
+      function openTelegramModal() {
+        document.getElementById("telegramModal").classList.remove("hidden");
+      }
+      function closeTelegramModal() {
+        document.getElementById("telegramModal").classList.add("hidden");
+      }
+      function sendTelegram() {
+        const message = document.getElementById("telegramMessage").value;
+        alert("(Demo) Đã gửi tin nhắn Telegram:\n\n" + message);
+        closeTelegramModal();
+      }
+
+      function openEmailModal() {
+        document.getElementById("emailModal").classList.remove("hidden");
+      }
+      function closeEmailModal() {
+        document.getElementById("emailModal").classList.add("hidden");
+      }
+    </script>
+
+    <!-- Delete Confirmation Modal -->
+    <div
+      id="deleteConfirmModal"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white w-full max-w-md rounded-lg shadow-lg">
+        <div class="p-4 border-b">
+          <h2 class="text-lg font-semibold">Xác nhận xoá nhân sự</h2>
+        </div>
+        <div class="p-4">
+          <p>
+            Bạn có chắc chắn muốn xoá nhân sự
+            <strong id="deleteEmployeeName">này</strong> không?
+          </p>
+        </div>
+        <div class="flex justify-end gap-2 p-4 border-t">
+          <button
+            onclick="closeDeleteModal()"
+            class="px-4 py-1 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Huỷ
+          </button>
+          <button
+            onclick="confirmDelete()"
+            class="px-4 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Xoá
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="p-4">
-      <p>Bạn có chắc chắn muốn xoá nhân sự <strong id="deleteEmployeeName">này</strong> không?</p>
-    </div>
-    <div class="flex justify-end gap-2 p-4 border-t">
-      <button onclick="closeDeleteModal()" class="px-4 py-1 bg-gray-300 rounded hover:bg-gray-400">Huỷ</button>
-      <button onclick="confirmDelete()" class="px-4 py-1 bg-red-600 text-white rounded hover:bg-red-700">Xoá</button>
-    </div>
-  </div>
-</div>
+    <!-- Telegram Modal -->
+    <div
+      id="telegramModal"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white w-full max-w-md rounded-lg shadow-lg">
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-xl font-semibold">Gửi giới thiệu qua Telegram</h2>
+          <button
+            onclick="closeTelegramModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <label class="block mb-2 font-medium">Nội dung tin nhắn</label>
+          <textarea
+            id="telegramMessage"
+            class="w-full border border-gray-300 rounded px-3 py-2 h-40"
+          >
+Xin chào,
 
-</body>
+Tôi xin giới thiệu nhân sự mới:
+- Họ tên: Nguyễn Văn A
+- Mã nhân sự: NV001
+- Phòng ban: Phòng Kế toán
+- Ngày vào: 01/05/2020
+
+Trân trọng.
+      </textarea
+          >
+          <div class="flex justify-end gap-2 mt-4">
+            <button
+              onclick="closeTelegramModal()"
+              class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+            >
+              Huỷ
+            </button>
+            <button
+              onclick="sendTelegram()"
+              class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Gửi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Modal -->
+    <div
+      id="emailModal"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white w-full max-w-2xl rounded-lg shadow-lg">
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-xl font-semibold">Gửi Email cho nhân sự</h2>
+          <button
+            onclick="closeEmailModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="p-6">
+          <label class="block mb-2 font-medium">Tiêu đề</label>
+          <input
+            type="text"
+            id="emailSubject"
+            class="w-full border border-gray-300 rounded px-3 py-2 mb-4"
+            placeholder="Tiêu đề email"
+          />
+
+          <label class="block mb-2 font-medium">Nội dung</label>
+          <textarea
+            id="emailBody"
+            class="w-full border border-gray-300 rounded px-3 py-2 h-56"
+            placeholder="Soạn nội dung email..."
+          >
+Xin chào Nguyễn Văn A,
+
+Chào mừng bạn đến với công ty!
+Chúng tôi rất vui được làm việc cùng bạn.
+Dưới đây là thông tin tài khoản email và 1Office được cấp:
+*****
+
+Trân trọng,
+Phòng Nhân sự
+      </textarea
+          >
+
+          <div class="flex justify-end gap-2 mt-4">
+            <button
+              onclick="closeEmailModal()"
+              class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+            >
+              Huỷ
+            </button>
+            <button
+              onclick="sendEmail()"
+              class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+            >
+              Gửi Email
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
