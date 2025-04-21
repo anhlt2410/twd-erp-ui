@@ -46,6 +46,9 @@
   .tab-content.active {
     @apply block h-full;
   }
+  tr.selected {
+  background-color: #f0f9ff;
+}
   </style>
 </head>
 <body class="flex h-screen bg-gray-100 font-sans overflow-hidden">
@@ -143,6 +146,10 @@
         <table class="min-w-full table-auto text-sm border border-gray-300">
           <thead class="bg-theme text-white">
             <tr>
+              
+    <th class="px-4 py-2 border text-left">
+      <input type="checkbox" onclick="toggleAllCheckboxes(this)" />
+    </th>
               <th class="px-4 py-2 border text-left">Người tạo</th>
               <th class="px-4 py-2 border text-left">Mã hợp đồng</th>
               <th class="px-4 py-2 border text-left">Tên nhân sự</th>
@@ -160,6 +167,10 @@
             </tr>
             <tbody id="contractTable">
                 <tr class="hover:bg-gray-100">
+                  
+  <td class="px-4 py-2 border">
+    <input type="checkbox" class="row-checkbox" />
+  </td>
                   <td class="px-4 py-2 border">Nguyễn Văn A</td>
                   <td class="px-4 py-2 border">HD001</td>
                   <td class="px-4 py-2 border">Trần Thị B</td>
@@ -179,6 +190,10 @@
                   </td>
                 </tr>
                 <tr class="hover:bg-gray-100">
+                  
+  <td class="px-4 py-2 border">
+    <input type="checkbox" class="row-checkbox" />
+  </td>
                   <td class="px-4 py-2 border">Lê Văn C</td>
                   <td class="px-4 py-2 border">HD002</td>
                   <td class="px-4 py-2 border">Nguyễn Thị D</td>
@@ -198,6 +213,10 @@
                   </td>
                 </tr>
                 <tr class="hover:bg-gray-100">
+                  
+  <td class="px-4 py-2 border">
+    <input type="checkbox" class="row-checkbox" />
+  </td>
                   <td class="px-4 py-2 border">Phạm Thị E</td>
                   <td class="px-4 py-2 border">HD003</td>
                   <td class="px-4 py-2 border">Hoàng Văn F</td>
@@ -386,6 +405,12 @@
   }
   function closeImportContractModal() {
     document.getElementById('importContractModal').classList.add('hidden');
+  }
+</script>
+<script>
+  function toggleAllCheckboxes(source) {
+    const checkboxes = document.querySelectorAll('.row-checkbox');
+    checkboxes.forEach(cb => cb.checked = source.checked);
   }
 </script>
 

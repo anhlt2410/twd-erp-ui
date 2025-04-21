@@ -55,6 +55,9 @@
       .tab-content.active {
         @apply block h-full;
       }
+      #bulkActionBar {
+        transition: all 0.2s ease;
+      }
     </style>
   </head>
   <body class="flex h-screen bg-gray-100 font-sans overflow-hidden">
@@ -200,7 +203,7 @@
               >
                 <i class="fas fa-edit mr-1"></i>Import
               </button>
-              <button
+              <!-- <button
                 onclick="openTelegramModal()"
                 class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
@@ -211,14 +214,69 @@
                 class="px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700"
               >
                 <i class="fas fa-envelope mr-1"></i>Gửi Email
-              </button>
+              </button> -->
             </div>
           </div>
 
+          <div
+            id="actionBar"
+            class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white border shadow-lg px-4 py-2 rounded-md hidden z-50 flex gap-4"
+          >
+            <button
+              onclick="openTelegramModal()"
+              class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+            >
+              <i class="fab fa-telegram mr-1"></i>Giới thiệu
+            </button>
+            <button
+              onclick="openEmailModal()"
+              class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700"
+            >
+              <i class="fas fa-envelope mr-1"></i>Gửi Email
+            </button>
+          </div>
           <div class="overflow-auto">
+            <!-- Bulk Action Bar -->
+            <div
+              id="bulkActionBar"
+              class="hidden sticky top-0 z-20 bg-white border-b px-4 py-2 flex justify-between items-center shadow-sm"
+            >
+              <div>
+                <span id="selectedCount" class="font-medium text-gray-700"
+                  >0 nhân sự được chọn</span
+                >
+              </div>
+              <div class="space-x-2">
+                <button
+                  onclick="openTelegramModal()"
+                  class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
+                >
+                  <i class="fab fa-telegram mr-1"></i>Giới thiệu
+                </button>
+                <button
+                  onclick="openEmailModal()"
+                  class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700"
+                >
+                  <i class="fas fa-envelope mr-1"></i>Gửi Email
+                </button>
+                <button
+                  onclick="clearAllSelection()"
+                  class="text-gray-500 hover:text-gray-700 underline"
+                >
+                  Bỏ chọn
+                </button>
+              </div>
+            </div>
             <table class="min-w-full table-auto text-sm border border-gray-300">
               <thead class="bg-theme text-white">
                 <tr>
+                  <th class="px-2 py-2 text-center border">
+                    <input
+                      type="checkbox"
+                      id="selectAll"
+                      onclick="toggleSelectAll(this)"
+                    />
+                  </th>
                   <th class="px-4 py-2 text-left border">Mã nhân sự</th>
                   <th class="px-4 py-2 text-left border">Họ tên</th>
                   <th class="px-4 py-2 text-left border">Ngày sinh</th>
@@ -244,6 +302,13 @@
                   data-manager="Trần Thị B"
                   data-type="In-house"
                 >
+                  <td class="px-2 py-2 border text-center">
+                    <input
+                      type="checkbox"
+                      class="rowCheckbox"
+                      onclick="handleCheckboxChange()"
+                    />
+                  </td>
                   <td class="px-4 py-2 border">NV001</td>
                   <td class="px-4 py-2 border">Nguyễn Văn A</td>
                   <td class="px-4 py-2 border">01/01/1990</td>
@@ -399,6 +464,9 @@
   <tr class="hover:bg-gray-100 group cursor-pointer" onclick='handleRowClick(event, ${JSON.stringify(
     emp
   )})'>
+    <td class="px-2 py-2 border text-center">
+    <input type="checkbox" class="rowCheckbox" onclick="event.stopPropagation(); handleCheckboxChange()" />
+  </td>
     <td class="px-4 py-2 border">${emp.id}</td>
     <td class="px-4 py-2 border">${emp.name}</td>
     <td class="px-4 py-2 border">${emp.dob}</td>
@@ -1063,5 +1131,48 @@ Phòng Nhân sự
         </div>
       </div>
     </div>
+    <script>
+      function handleCheckboxChange() {
+        const checkboxes = document.querySelectorAll(".rowCheckbox");
+        const anyChecked = Array.from(checkboxes).some((cb) => cb.checked);
+        document
+          .getElementById("actionBar")
+          .classList.toggle("hidden", !anyChecked);
+      }
+
+      function toggleSelectAll(masterCheckbox) {
+        const checkboxes = document.querySelectorAll(".rowCheckbox");
+        checkboxes.forEach((cb) => (cb.checked = masterCheckbox.checked));
+        handleCheckboxChange();
+      }
+      function handleCheckboxChange() {
+        const checkboxes = document.querySelectorAll(".rowCheckbox");
+        const checked = Array.from(checkboxes).filter((cb) => cb.checked);
+        const bar = document.getElementById("bulkActionBar");
+        const countDisplay = document.getElementById("selectedCount");
+
+        if (checked.length > 0) {
+          bar.classList.remove("hidden");
+          countDisplay.textContent = `${checked.length} nhân sự được chọn`;
+        } else {
+          bar.classList.add("hidden");
+        }
+      }
+      function toggleSelectAll(master) {
+        const checkboxes = document.querySelectorAll(".rowCheckbox");
+        checkboxes.forEach((cb) => {
+          cb.checked = master.checked;
+        });
+        handleCheckboxChange();
+      }
+
+      function clearAllSelection() {
+        document
+          .querySelectorAll(".rowCheckbox")
+          .forEach((cb) => (cb.checked = false));
+        document.getElementById("selectAll").checked = false;
+        handleCheckboxChange();
+      }
+    </script>
   </body>
 </html>
