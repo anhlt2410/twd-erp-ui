@@ -203,18 +203,6 @@
               >
                 <i class="fas fa-edit mr-1"></i>Import
               </button>
-              <!-- <button
-                onclick="openTelegramModal()"
-                class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-              >
-                <i class="fab fa-telegram mr-1"></i>Giới thiệu
-              </button>
-              <button
-                onclick="openEmailModal()"
-                class="px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700"
-              >
-                <i class="fas fa-envelope mr-1"></i>Gửi Email
-              </button> -->
             </div>
           </div>
 
@@ -226,13 +214,13 @@
               onclick="openTelegramModal()"
               class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
             >
-              <i class="fab fa-telegram mr-1"></i>Giới thiệu
+              <i class="fab fa-telegram mr-1"></i>Telegram
             </button>
             <button
               onclick="openEmailModal()"
               class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700"
             >
-              <i class="fas fa-envelope mr-1"></i>Gửi Email
+              <i class="fas fa-envelope mr-1"></i>Email
             </button>
           </div>
           <div class="overflow-auto">
@@ -251,13 +239,19 @@
                   onclick="openTelegramModal()"
                   class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                 >
-                  <i class="fab fa-telegram mr-1"></i>Giới thiệu
+                  <i class="fab fa-telegram mr-1"></i>Telegram
                 </button>
                 <button
                   onclick="openEmailModal()"
                   class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700"
                 >
-                  <i class="fas fa-envelope mr-1"></i>Gửi Email
+                  <i class="fas fa-envelope mr-1"></i>Email
+                </button>
+                <button
+                  onclick="openContractModal()"
+                  class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                >
+                  <i class="fas fa-file-signature mr-1"></i>Tạo hợp đồng
                 </button>
                 <button
                   onclick="clearAllSelection()"
@@ -393,26 +387,59 @@
         panel.classList.toggle("show");
       }
 
-      function openDetailPanel(data) {
+      function openDetailPanel(emp) {
         const panel = document.getElementById("rightPanel");
         panel.innerHTML = `
-    <div class="p-4">
-      <h2 class="text-lg font-semibold mb-2">Thông tin nhân sự</h2>
-      <p><strong>Mã nhân sự:</strong> ${data.id}</p>
-      <p><strong>Họ tên:</strong> ${data.name}</p>
-      <p><strong>Ngày sinh:</strong> ${data.dob}</p>
-      <p><strong>Giới tính:</strong> ${data.gender}</p>
-      <p><strong>Nguyên quán:</strong> ${data.hometown}</p>
-      <p><strong>Ngày vào:</strong> ${data.join}</p>
-      <p><strong>Phòng ban:</strong> ${data.department}</p>
-      <p><strong>Người QL trực tiếp:</strong> ${data.manager}</p>
-      <p><strong>Loại lao động:</strong> ${data.type}</p>
-      <div class="flex justify-end gap-2 mt-4">
-        <button onclick="togglePanel()" class="px-3 py-1 bg-gray-300 rounded">Đóng</button>
+    <div class="p-4 h-full flex flex-col">
+      <!-- Header -->
+      <div class="flex justify-between items-start border-b pb-3 mb-4">
+        <div>
+          <h2 class="text-xl font-semibold text-gray-800">${emp.name}</h2>
+          <p class="text-sm text-gray-500">Mã nhân sự: ${emp.id}</p>
+        </div>
+        <div class="flex gap-2">
+          <button onclick="togglePanel()" class="text-gray-500 hover:text-gray-700 text-sm">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Personal Info Section -->
+      <div class="mb-6">
+        <h3 class="font-medium text-gray-700 mb-2">Thông tin cá nhân</h3>
+        <ul class="text-sm text-gray-600 space-y-1">
+          <li><strong>Ngày sinh:</strong> ${emp.dob}</li>
+          <li><strong>Giới tính:</strong> ${emp.gender}</li>
+          <li><strong>Nguyên quán:</strong> ${emp.hometown}</li>
+        </ul>
+      </div>
+
+      <!-- Job Info Section -->
+      <div class="mb-6">
+        <h3 class="font-medium text-gray-700 mb-2">Thông tin công việc</h3>
+        <ul class="text-sm text-gray-600 space-y-1">
+          <li><strong>Ngày vào:</strong> ${emp.join}</li>
+          <li><strong>Phòng ban:</strong> ${emp.department}</li>
+          <li><strong>Người QL trực tiếp:</strong> ${emp.manager}</li>
+          <li><strong>Loại lao động:</strong> ${emp.type}</li>
+        </ul>
+      </div>
+
+      <!-- (Optional) Related Section -->
+      <div class="mb-6">
+        <div class="flex gap-2">
+          <button onclick="openTelegramModal()" class="bg-blue-500 text-white text-sm px-3 py-1 rounded hover:bg-blue-600">
+            <i class="fab fa-telegram mr-1"></i>Telegram
+          </button>
+          <button onclick="openEmailModal()" class="bg-indigo-600 text-white text-sm px-3 py-1 rounded hover:bg-indigo-700">
+            <i class="fas fa-envelope mr-1"></i>Email
+          </button>
+        </div>
       </div>
     </div>
   `;
         panel.classList.add("show");
+        window.currentEmployee = emp; // store for editing reference
       }
 
       const employees = [
@@ -1029,7 +1056,7 @@
     >
       <div class="bg-white w-full max-w-md rounded-lg shadow-lg">
         <div class="flex justify-between items-center p-4 border-b">
-          <h2 class="text-xl font-semibold">Gửi giới thiệu qua Telegram</h2>
+          <h2 class="text-xl font-semibold">Telegram</h2>
           <button
             onclick="closeTelegramModal()"
             class="text-gray-500 hover:text-gray-700"
@@ -1038,10 +1065,25 @@
           </button>
         </div>
         <div class="p-6">
+          <label class="block mb-2 font-medium">Thông báo tới nhóm</label>
+          <select
+            id="telegramGroup"
+            class="w-full border border-gray-300 rounded px-3 py-2 mb-4"
+          >
+            <option>TWENDEE ALL (Internal)</option>
+            <option>HR</option>
+            <option>Marketing</option>
+            <option>BD</option>
+            <option>Kế toán</option>
+            <option>Dự Án A</option>
+            <option>Dự Án B</option>
+          </select>
+
           <label class="block mb-2 font-medium">Nội dung tin nhắn</label>
           <textarea
             id="telegramMessage"
             class="w-full border border-gray-300 rounded px-3 py-2 h-40"
+            placeholder="Soạn nội dung thông báo..."
           >
 Xin chào,
 
@@ -1054,6 +1096,7 @@ Tôi xin giới thiệu nhân sự mới:
 Trân trọng.
       </textarea
           >
+
           <div class="flex justify-end gap-2 mt-4">
             <button
               onclick="closeTelegramModal()"
@@ -1079,7 +1122,7 @@ Trân trọng.
     >
       <div class="bg-white w-full max-w-2xl rounded-lg shadow-lg">
         <div class="flex justify-between items-center p-4 border-b">
-          <h2 class="text-xl font-semibold">Gửi Email cho nhân sự</h2>
+          <h2 class="text-xl font-semibold">Email cho nhân sự</h2>
           <button
             onclick="closeEmailModal()"
             class="text-gray-500 hover:text-gray-700"
@@ -1173,6 +1216,147 @@ Phòng Nhân sự
         document.getElementById("selectAll").checked = false;
         handleCheckboxChange();
       }
+
+      function openContractModal() {
+        const selected = document.querySelectorAll(".rowCheckbox:checked");
+        if (selected.length === 0) {
+          alert("Vui lòng chọn ít nhất 1 nhân sự để tạo hợp đồng.");
+          return;
+        }
+        document.getElementById("contractModal").classList.remove("hidden");
+      }
+      function closeContractModal() {
+        document.getElementById("contractModal").classList.add("hidden");
+      }
+      function saveContract() {
+        alert("Hợp đồng đã được lưu (demo).");
+        closeContractModal();
+      }
     </script>
+    <!-- Contract Modal -->
+    <div
+      id="contractModal"
+      class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div
+        class="bg-white w-full max-w-4xl rounded-lg shadow-lg flex flex-col max-h-[90vh]"
+      >
+        <div class="flex justify-between items-center p-4 border-b">
+          <h2 class="text-xl font-semibold">Tạo hợp đồng cho nhân sự</h2>
+          <button
+            onclick="closeContractModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto flex-1 space-y-8">
+          <!-- Thông tin chung -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">1. Thông tin chung</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label>Mã hợp đồng</label
+                ><input class="input" value="Tự động" disabled />
+              </div>
+              <div>
+                <label>Loại hợp đồng</label>
+                <select class="input">
+                  <option>Lao động 1 năm</option>
+                  <option>Thử việc</option>
+                  <option>Vô thời hạn</option>
+                  <option>Dưới 12 tháng</option>
+                  <option>3 năm</option>
+                  <option>CTV</option>
+                  <option>Học việc</option>
+                </select>
+              </div>
+              <div><label>Phòng ban</label><input class="input" /></div>
+              <div><label>Vị trí</label><input class="input" /></div>
+              <div><label>Chức vụ</label><input class="input" /></div>
+              <div>
+                <label>Cấp bậc</label>
+                <select class="input">
+                  <option>Fresher</option>
+                  <option>Intern</option>
+                  <option>Junior (no Eng)</option>
+                  <option>Junior</option>
+                  <option>Mid</option>
+                  <option>Senior</option>
+                </select>
+              </div>
+              <div><label>Nơi làm việc</label><input class="input" /></div>
+              <div>
+                <label>Hình thức làm việc</label>
+                <select class="input">
+                  <option>Full-time</option>
+                  <option>Part-time</option>
+                  <option>CTV</option>
+                </select>
+              </div>
+              <div>
+                <label>Hiệu lực từ ngày *</label>
+                <input type="date" class="input" required />
+              </div>
+              <div>
+                <label>Hiệu lực đến ngày</label
+                ><input type="date" class="input" />
+              </div>
+              <div>
+                <label>Ngày ký</label><input type="date" class="input" />
+              </div>
+              <div><label>Người ký</label><input class="input" /></div>
+              <div class="col-span-2">
+                <label><input type="checkbox" class="mr-2" />Ký số</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lương và phụ cấp -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">2. Lương và phụ cấp</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label>Từ ngày *</label>
+                <input type="date" class="input" required />
+              </div>
+              <div><label>Ghi chú</label><input class="input" /></div>
+              <div>
+                <label>Tiền lương</label><input type="number" class="input" />
+              </div>
+              <div>
+                <label>Loại phụ cấp</label>
+                <select class="input">
+                  <option>Đi lại</option>
+                  <option>Ăn trưa</option>
+                </select>
+              </div>
+              <div>
+                <label>Số tiền phụ cấp</label
+                ><input type="number" class="input" />
+              </div>
+              <div><label>Ghi chú phụ cấp</label><input class="input" /></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="flex justify-end gap-2 p-4 border-t">
+          <button
+            onclick="closeContractModal()"
+            class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Huỷ
+          </button>
+          <button
+            onclick="saveContract()"
+            class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+          >
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
