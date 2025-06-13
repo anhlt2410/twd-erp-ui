@@ -51,14 +51,6 @@
           });
         });
 
-        document.querySelectorAll(".open-detail").forEach((link) => {
-          link.addEventListener("click", () => {
-            document
-              .getElementById("popup-phieu-nhap-detail")
-              .classList.remove("hidden");
-          });
-        });
-
         document.querySelectorAll(".btn-close").forEach((button) => {
           button.addEventListener("click", () => {
             button.closest(".fixed").classList.add("hidden");
@@ -70,6 +62,45 @@
             button.closest("tr").remove();
           });
         });
+
+        document
+          .getElementById("btn-xoa-phieu")
+          ?.addEventListener("click", () => {
+            document
+              .getElementById("modal-confirm-delete")
+              .classList.remove("hidden");
+          });
+
+        document.querySelectorAll(".open-detail").forEach((link) => {
+          link.addEventListener("click", () => {
+            document
+              .getElementById("modal-sua-phieu-nhap")
+              .classList.remove("hidden");
+          });
+        });
+
+        document
+          .getElementById("btn-them-dong")
+          ?.addEventListener("click", () => {
+            const tbody = document.querySelector("#modal-phieu-nhap tbody");
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+          <td class="p-2 border">SP003</td>
+          <td class="p-2 border">Sản phẩm C</td>
+          <td class="p-2 border">Hộp</td>
+          <td class="p-2 border">10</td>
+          <td class="p-2 border">Product C</td>
+          <td class="p-2 border">Box</td>
+          <td class="p-2 border text-red-600 cursor-pointer btn-delete-row">-</td>
+        `;
+            tbody.appendChild(newRow);
+
+            newRow
+              .querySelector(".btn-delete-row")
+              .addEventListener("click", () => {
+                newRow.remove();
+              });
+          });
       });
     </script>
   </head>
@@ -131,6 +162,17 @@
                 <td class="p-2 border">Product A</td>
                 <td class="p-2 border">Piece</td>
               </tr>
+              <tr>
+                <td class="p-2 border">SP002</td>
+                <td class="p-2 border">Sản phẩm B</td>
+                <td class="p-2 border">Thùng</td>
+                <td class="p-2 border">60</td>
+                <td class="p-2 border">30</td>
+                <td class="p-2 border">10</td>
+                <td class="p-2 border">80</td>
+                <td class="p-2 border">Product B</td>
+                <td class="p-2 border">Box</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -169,6 +211,14 @@
                   PN001 / Sản phẩm A
                 </td>
                 <td class="p-2 border">50</td>
+              </tr>
+              <tr>
+                <td class="p-2 border">2</td>
+                <td class="p-2 border">SP002</td>
+                <td class="p-2 border text-blue-600 cursor-pointer open-detail">
+                  PN002 / Sản phẩm B
+                </td>
+                <td class="p-2 border">30</td>
               </tr>
             </tbody>
           </table>
@@ -231,48 +281,9 @@
                 <td class="p-2 border">SP002</td>
                 <td class="p-2 border">Sản phẩm B</td>
                 <td class="p-2 border">Thùng</td>
-                <td class="p-2 border">20</td>
+                <td class="p-2 border">30</td>
                 <td class="p-2 border">Product B</td>
                 <td class="p-2 border">Box</td>
-                <td
-                  class="p-2 border text-red-600 cursor-pointer btn-delete-row"
-                >
-                  -
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border">SP003</td>
-                <td class="p-2 border">Sản phẩm C</td>
-                <td class="p-2 border">Kg</td>
-                <td class="p-2 border">75</td>
-                <td class="p-2 border">Product C</td>
-                <td class="p-2 border">Kg</td>
-                <td
-                  class="p-2 border text-red-600 cursor-pointer btn-delete-row"
-                >
-                  -
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border">SP004</td>
-                <td class="p-2 border">Sản phẩm D</td>
-                <td class="p-2 border">Lít</td>
-                <td class="p-2 border">100</td>
-                <td class="p-2 border">Product D</td>
-                <td class="p-2 border">Litre</td>
-                <td
-                  class="p-2 border text-red-600 cursor-pointer btn-delete-row"
-                >
-                  -
-                </td>
-              </tr>
-              <tr>
-                <td class="p-2 border">SP005</td>
-                <td class="p-2 border">Sản phẩm E</td>
-                <td class="p-2 border">Chai</td>
-                <td class="p-2 border">60</td>
-                <td class="p-2 border">Product E</td>
-                <td class="p-2 border">Bottle</td>
                 <td
                   class="p-2 border text-red-600 cursor-pointer btn-delete-row"
                 >
@@ -282,10 +293,89 @@
             </tbody>
           </table>
           <div class="flex space-x-2 mb-4">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded">+</button>
+            <button
+              id="btn-them-dong"
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              +
+            </button>
           </div>
           <div class="flex justify-between">
-            <button class="bg-gray-400 text-white px-4 py-2 rounded">
+            <button class="bg-green-500 text-white px-4 py-2 rounded">
+              Lưu
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal sửa phiếu nhập -->
+      <div
+        id="modal-sua-phieu-nhap"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      >
+        <div class="bg-white p-6 rounded-lg w-full max-w-3xl">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-bold">Phiếu nhập kho</h3>
+            <button class="btn-close text-gray-500 hover:text-red-500">
+              ✖
+            </button>
+          </div>
+          <label class="block mb-2">Chọn ngày:</label>
+          <input type="date" class="border p-2 rounded mb-4" />
+          <table class="table-auto w-full text-sm text-left border mb-4">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="p-2 border">Mã SP</th>
+                <th class="p-2 border">Tên 1</th>
+                <th class="p-2 border">ĐVT1</th>
+                <th class="p-2 border">Số lượng</th>
+                <th class="p-2 border">Tên 2</th>
+                <th class="p-2 border">ĐVT2</th>
+                <th class="p-2 border">#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2 border">SP001</td>
+                <td class="p-2 border">Sản phẩm A</td>
+                <td class="p-2 border">Cái</td>
+                <td class="p-2 border">50</td>
+                <td class="p-2 border">Product A</td>
+                <td class="p-2 border">Piece</td>
+                <td
+                  class="p-2 border text-red-600 cursor-pointer btn-delete-row"
+                >
+                  -
+                </td>
+              </tr>
+              <tr>
+                <td class="p-2 border">SP002</td>
+                <td class="p-2 border">Sản phẩm B</td>
+                <td class="p-2 border">Thùng</td>
+                <td class="p-2 border">30</td>
+                <td class="p-2 border">Product B</td>
+                <td class="p-2 border">Box</td>
+                <td
+                  class="p-2 border text-red-600 cursor-pointer btn-delete-row"
+                >
+                  -
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="flex space-x-2 mb-4">
+            <button
+              id="btn-them-dong"
+              class="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              +
+            </button>
+          </div>
+          <div class="flex justify-between">
+            <button
+              id="btn-xoa-phieu"
+              class="bg-gray-400 text-white px-4 py-2 rounded"
+            >
               Xóa phiếu
             </button>
             <button class="bg-green-500 text-white px-4 py-2 rounded">
@@ -295,7 +385,58 @@
         </div>
       </div>
 
-      <!-- Other popups remain unchanged -->
+      <!-- Modal confirm delete -->
+      <div
+        id="modal-confirm-delete"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      >
+        <div class="bg-white p-6 rounded shadow-lg w-full max-w-sm">
+          <h3 class="text-lg font-semibold mb-4">Xác nhận xóa phiếu?</h3>
+          <div class="flex justify-end space-x-2">
+            <button class="btn-close bg-gray-300 text-black px-4 py-2 rounded">
+              Hủy
+            </button>
+            <button class="bg-red-600 text-white px-4 py-2 rounded">Xóa</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popup danh sách hàng nhập -->
+      <div
+        id="popup-danh-sach"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+      >
+        <div class="bg-white p-6 rounded-lg w-full max-w-4xl">
+          <h3 class="text-lg font-bold mb-4">Danh sách hàng nhập kho</h3>
+          <table class="table-auto w-full text-sm text-left border mb-4">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="p-2 border">Ngày nhập hàng</th>
+                <th class="p-2 border">Mã SP</th>
+                <th class="p-2 border">Tên SP 1</th>
+                <th class="p-2 border">ĐVT 1</th>
+                <th class="p-2 border">Số lượng</th>
+                <th class="p-2 border">Tên SP 2</th>
+                <th class="p-2 border">ĐVT 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2 border">2025-06-01</td>
+                <td class="p-2 border">SP001</td>
+                <td class="p-2 border">Sản phẩm A</td>
+                <td class="p-2 border">Cái</td>
+                <td class="p-2 border">50</td>
+                <td class="p-2 border">Product A</td>
+                <td class="p-2 border">Piece</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="bg-blue-600 text-white px-4 py-2 rounded">
+            Export Excel
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
