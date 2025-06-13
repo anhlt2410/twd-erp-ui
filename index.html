@@ -1,222 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Twendee ERP</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <style>
-      .submenu-panel {
-        display: none;
-        position: absolute;
-        left: 100%;
-        top: 0;
-        background-color: #2d3a73;
-        border-radius: 0.5rem;
-        min-width: 200px;
-        z-index: 10;
-      }
-      .menu-item:hover .submenu-panel,
-      .submenu-panel:hover {
-        display: block;
-      }
-      .submenu-item:hover {
-        background-color: #3d4c8c;
-      }
-      #rightPanel {
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-      }
-      #rightPanel.show {
-        transform: translateX(0);
-      }
-      .bg-theme {
-        background-color: #1e2a62;
-      }
-      .text-theme {
-        color: #1e2a62;
-      }
-    </style>
-  </head>
-  <body class="flex h-screen bg-gray-100 font-sans overflow-hidden">
-    <!-- Sidebar -->
-    <aside
-      id="sidebar"
-      class="relative w-16 bg-theme shadow-lg flex flex-col items-center pt-16 transition-all duration-300"
-    >
-      <div class="flex flex-col gap-4 w-full items-center">
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-user text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded">User</span>
-        </div>
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-cogs text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded"
-            >Automatic Process</span
-          >
-        </div>
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-users text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded"
-            >Human Resource</span
-          >
-          <div class="submenu-panel p-2">
-            <div class="submenu-item p-2 rounded cursor-pointer">Dashboard</div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              Department
-            </div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              <a href="employee.html"> Employee </a>
-            </div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              <a href="contract.html"> Contract </a>
-            </div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              Recruitment
-            </div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              <a href="assessment.html"> Assessment </a>
-            </div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              Attendance
-            </div>
-            <div class="submenu-item p-2 rounded cursor-pointer">Leave</div>
-            <div class="submenu-item p-2 rounded cursor-pointer">Report</div>
-          </div>
-        </div>
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-file-invoice-dollar text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded">Accountant</span>
-          <div class="submenu-panel p-2">
-            <div class="submenu-item p-2 rounded cursor-pointer">Salary</div>
-            <div class="submenu-item p-2 rounded cursor-pointer">
-              Receipts and Expenses
-            </div>
-          </div>
-        </div>
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-chart-line text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded">CRM</span>
-        </div>
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-id-card text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded"
-            >CV Management</span
-          >
-        </div>
-        <div
-          class="menu-item relative group flex flex-col items-center text-white"
-        >
-          <i class="fas fa-tasks text-xl"></i>
-          <span class="text-xs mt-1 hidden sidebar-expanded"
-            >Project and Log work</span
-          >
-        </div>
-      </div>
-      <div class="mt-auto pt-6">
-        <button onclick="toggleSidebar()">
-          <i
-            class="fas fa-angle-double-right text-white text-xl cursor-pointer"
-          ></i>
-        </button>
-      </div>
-    </aside>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quản lý tồn kho</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = document.querySelectorAll("[data-tab-target]");
+      const tabContents = document.querySelectorAll("[data-tab-content]");
 
-    <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
-      <!-- Topbar -->
-      <header
-        class="flex items-center justify-between px-6 py-2 bg-theme text-white shadow w-screen fixed top-0 left-0 z-40"
-      >
-        <div class="flex items-center gap-6">
-          <img
-            src="twendee_logo_transparent.png"
-            alt="Twendee Logo"
-            class="h-10 w-auto"
-          />
-        </div>
-        <div class="flex items-center gap-4 flex-1 justify-end">
-          <input
-            type="text"
-            placeholder="Search..."
-            class="px-3 py-1 border border-gray-300 rounded text-black w-64"
-          />
-          <i class="fas fa-bell text-xl"></i>
-          <i class="fas fa-cog text-xl"></i>
-          <div class="w-8 h-8 rounded-full bg-gray-300"></div>
-        </div>
-      </header>
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          tabContents.forEach(content => content.classList.add("hidden"));
+          tabs.forEach(t => t.classList.remove("border-blue-500", "text-blue-500"));
 
-      <!-- Spacer to offset fixed header -->
-      <div class="h-14"></div>
+          document.querySelector(tab.dataset.tabTarget).classList.remove("hidden");
+          tab.classList.add("border-blue-500", "text-blue-500");
+        });
+      });
 
-      <!-- Main area -->
-      <main class="flex-1 p-4 overflow-auto relative">
-        <div class="bg-white p-4 rounded shadow">
-          <div class="flex justify-between items-center mb-4">
-            <h2 class="text-lg font-semibold">Main content area</h2>
-            <button
-              onclick="togglePanel()"
-              class="px-3 py-1 bg-theme text-white rounded"
-            >
-              View Details
-            </button>
-          </div>
-          <p class="text-sm text-gray-600">Tables, forms, charts, etc.</p>
-        </div>
-      </main>
+      document.getElementById("btn-tao-phieu-nhap").addEventListener("click", () => {
+        document.getElementById("modal-phieu-nhap").classList.remove("hidden");
+      });
+
+      document.getElementById("btn-danh-sach-nhap").addEventListener("click", () => {
+        document.getElementById("popup-danh-sach").classList.remove("hidden");
+      });
+
+      document.querySelectorAll(".bg-black").forEach(overlay => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            overlay.classList.add("hidden");
+          }
+        });
+      });
+
+      document.querySelectorAll(".open-detail").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("modal-phieu-nhap").classList.remove("hidden");
+        });
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-100 p-4">
+  <div class="container mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Quản lý tồn kho</h1>
+    <div class="mb-6">
+      <ul class="flex border-b">
+        <li class="mr-6">
+          <a class="text-blue-500 font-semibold py-2 px-4 border-b-2 border-blue-500" href="#" data-tab-target="#tab-xuat-nhap-ton">Tổng hợp xuất nhập tồn</a>
+        </li>
+        <li class="mr-6">
+          <a class="text-gray-600 hover:text-blue-500 py-2 px-4" href="#" data-tab-target="#tab-phieu-nhap">Phiếu nhập kho</a>
+        </li>
+      </ul>
     </div>
 
-    <!-- Slide-in Panel -->
-    <aside
-      id="rightPanel"
-      class="w-80 bg-white shadow-lg border-l border-gray-200 p-4 fixed top-0 right-0 h-full z-50"
-    >
-      <h2 class="text-lg font-semibold mb-2">Detail View Panel</h2>
-      <p class="text-sm text-gray-600">
-        This panel slides in from the right to show more detailed views or quick
-        actions.
-      </p>
-      <button
-        onclick="togglePanel()"
-        class="mt-4 px-3 py-1 bg-gray-300 rounded"
-      >
-        Close
-      </button>
-    </aside>
+    <!-- Tab Tổng hợp xuất nhập tồn -->
+    <div id="tab-xuat-nhap-ton" data-tab-content class="bg-white p-4 rounded shadow mb-8">
+      <h2 class="text-xl font-semibold mb-4">Tổng hợp xuất nhập tồn</h2>
+      <div class="flex items-center space-x-2 mb-4">
+        <input type="date" class="border p-2 rounded" />
+        <span>đến</span>
+        <input type="date" class="border p-2 rounded" />
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">Tìm kiếm</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="table-auto w-full text-sm text-left border">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="p-2 border">Mã SP</th>
+              <th class="p-2 border">Tên SP1</th>
+              <th class="p-2 border">ĐVT1</th>
+              <th class="p-2 border">Tồn đầu</th>
+              <th class="p-2 border">Nhập</th>
+              <th class="p-2 border">Xuất</th>
+              <th class="p-2 border">Tồn cuối</th>
+              <th class="p-2 border">Tên SP2</th>
+              <th class="p-2 border">ĐVT2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border">SP001</td>
+              <td class="p-2 border">Sản phẩm A</td>
+              <td class="p-2 border">Cái</td>
+              <td class="p-2 border">100</td>
+              <td class="p-2 border">50</td>
+              <td class="p-2 border">20</td>
+              <td class="p-2 border">130</td>
+              <td class="p-2 border">Product A</td>
+              <td class="p-2 border">Piece</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-    <script>
-      function toggleSidebar() {
-        const sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("w-16");
-        sidebar.classList.toggle("w-48");
-        const labels = sidebar.querySelectorAll(".sidebar-expanded");
-        labels.forEach((label) => label.classList.toggle("hidden"));
-      }
+    <!-- Tab Phiếu nhập kho -->
+    <div id="tab-phieu-nhap" data-tab-content class="bg-white p-4 rounded shadow hidden">
+      <h2 class="text-xl font-semibold mb-4">Phiếu nhập kho</h2>
 
-      function togglePanel() {
-        const panel = document.getElementById("rightPanel");
-        panel.classList.toggle("show");
-      }
-    </script>
-  </body>
+      <!-- Nút tạo phiếu và danh sách -->
+      <div class="flex space-x-2 mb-4">
+        <button id="btn-tao-phieu-nhap" class="bg-green-600 text-white px-4 py-2 rounded">Tạo phiếu nhập kho</button>
+        <button id="btn-danh-sach-nhap" class="bg-gray-700 text-white px-4 py-2 rounded">Danh sách hàng nhập kho</button>
+      </div>
+
+      <!-- Search thời gian -->
+      <div class="flex items-center space-x-2 mb-4">
+        <input type="date" class="border p-2 rounded" />
+        <span>đến</span>
+        <input type="date" class="border p-2 rounded" />
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">Tìm kiếm</button>
+      </div>
+
+      <!-- Danh sách phiếu nhập kho -->
+      <div class="overflow-x-auto mb-4">
+        <table class="table-auto w-full text-sm text-left border">
+          <thead class="bg-gray-200">
+            <tr>
+              <th class="p-2 border">STT</th>
+              <th class="p-2 border">Mã SP</th>
+              <th class="p-2 border">Số phiếu / Tên SP</th>
+              <th class="p-2 border">Số lượng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border"></td>
+              <td class="p-2 border"></td>
+              <td class="p-2 border text-blue-600 cursor-pointer open-detail">PN001</td>
+              <td class="p-2 border"></td>
+            </tr>
+            <tr>
+              <td class="p-2 border">1</td>
+              <td class="p-2 border">SP001</td>
+              <td class="p-2 border">Sản phẩm A</td>
+              <td class="p-2 border">50</td>
+            </tr>
+            <tr>
+              <td class="p-2 border">1</td>
+              <td class="p-2 border">SP002</td>
+              <td class="p-2 border">Sản phẩm B</td>
+              <td class="p-2 border">100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal tạo/sửa phiếu nhập -->
+    <div id="modal-phieu-nhap" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg w-full max-w-3xl">
+        <h3 class="text-lg font-bold mb-4">Phiếu nhập kho</h3>
+        <label class="block mb-2">Chọn ngày:</label>
+        <input type="date" class="border p-2 rounded mb-4" />
+
+        <table class="table-auto w-full text-sm text-left border mb-4">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 border">Mã SP</th>
+              <th class="p-2 border">Tên 1</th>
+              <th class="p-2 border">ĐVT1</th>
+              <th class="p-2 border">Số lượng</th>
+              <th class="p-2 border">Tên 2</th>
+              <th class="p-2 border">ĐVT2</th>
+              <th class="p-2 border">#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border">SP001</td>
+              <td class="p-2 border">Sản phẩm A</td>
+              <td class="p-2 border">Cái</td>
+              <td class="p-2 border">50</td>
+              <td class="p-2 border">Product A</td>
+              <td class="p-2 border">Piece</td>
+              <td class="p-2 border">✖</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="flex space-x-2 mb-4">
+          <button class="bg-blue-500 text-white px-4 py-2 rounded">Thêm dòng</button>
+          <button class="bg-red-500 text-white px-4 py-2 rounded">Xóa dòng</button>
+        </div>
+        <div class="flex justify-between">
+          <button class="bg-gray-400 text-white px-4 py-2 rounded">Xóa phiếu</button>
+          <button class="bg-green-500 text-white px-4 py-2 rounded">Lưu</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup danh sách hàng nhập -->
+    <div id="popup-danh-sach" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-6 rounded-lg w-full max-w-4xl">
+        <h3 class="text-lg font-bold mb-4">Danh sách hàng nhập kho</h3>
+        <table class="table-auto w-full text-sm text-left border mb-4">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 border">Ngày nhập hàng</th>
+              <th class="p-2 border">Mã SP</th>
+              <th class="p-2 border">Tên SP 1</th>
+              <th class="p-2 border">ĐVT 1</th>
+              <th class="p-2 border">Số lượng</th>
+              <th class="p-2 border">Tên SP 2</th>
+              <th class="p-2 border">ĐVT 2</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border">2025-06-01</td>
+              <td class="p-2 border">SP001</td>
+              <td class="p-2 border">Sản phẩm A</td>
+              <td class="p-2 border">Cái</td>
+              <td class="p-2 border">50</td>
+              <td class="p-2 border">Product A</td>
+              <td class="p-2 border">Piece</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="bg-blue-600 text-white px-4 py-2 rounded">Export Excel</button>
+      </div>
+    </div>
+
+  </div>
+</body>
 </html>
